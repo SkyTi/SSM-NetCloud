@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>云科技</title>
+        <link type="text/css" rel="stylesheet" media="all" href="../styles/global.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="../styles/global_color.css" />
+        <script language="javascript" type="text/javascript">
+            //删除
+            function deleteAccount() {
+                var r = window.confirm("确定要删除此账务账号吗？\r\n删除后将不能恢复，且会删除其下属的所有业务账号。");
+                document.getElementById("operate_result_info").style.display = "block";
+            }
+            //开通或暂停
+            function setState() {
+                var r = window.confirm("确定要开通此账务账号吗？");
+                document.getElementById("operate_result_info").style.display = "block";
+            }
+        </script>
+    </head>
+    <body>
+        <!--Logo区域开始-->
+        <div id="header">
+            <img src="../images/logo.png" alt="logo" class="left"/>
+            <a href="#">[退出]</a>            
+        </div>
+        <!--Logo区域结束-->
+        <!--导航区域开始-->
+        <div id="navi">                        
+            <ul id="menu">
+                <li><a href="../index.html" class="index_off"></a></li>
+                <li><a href="../role/role_list.html" class="role_off"></a></li>
+                <li><a href="../admin/admin_list.html" class="admin_off"></a></li>
+                <li><a href="../fee/fee_list.html" class="fee_off"></a></li>
+                <li><a href="../account/account_list.html" class="account_on"></a></li>
+                <li><a href="../service/service_list.html" class="service_off"></a></li>
+                <li><a href="../bill/bill_list.html" class="bill_off"></a></li>
+                <li><a href="../report/report_list.html" class="report_off"></a></li>
+                <li><a href="../user/user_info.html" class="information_off"></a></li>
+                <li><a href="../user/user_modi_pwd.html" class="password_off"></a></li>
+            </ul>            
+        </div>
+        <!--导航区域结束-->
+        <!--主要区域开始-->
+        <div id="main">
+            <!--<form action="" method="">-->
+                <!--查询-->
+                <div class="search_add">                        
+                    <div>身份证：<input type="text" value="不验证" class="text_search" /></div>                            
+                    <div>姓名：<input type="text" class="width70 text_search" value="不验证" /></div>
+                    <div>登录名：<input type="text"  value="不验证" class="text_search" /></div>
+                    <div>
+                        状态：
+                        <select class="select_search">
+                            <option>全部</option>
+                            <option>开通</option>
+                            <option>暂停</option>
+                            <option>删除</option>
+                        </select>
+                    </div>
+                    <div><input type="button" value="搜索" class="btn_search" /></div>
+                    <input type="button" value="增加" class="btn_add" onclick="location.href='/accountAdd';" />
+                </div>  
+                <!--删除等的操作提示-->
+                <div id="operate_result_info" class="operate_success">
+                    <img src="../images/close.png" onclick="this.parentNode.style.display='none';" />
+                    删除成功，且已删除其下属的业务账号！
+                </div>   
+                <!--数据区域：用表格展示数据-->     
+                <div id="data">            
+                    <table id="datalist">
+                        <thead>
+                    <tr>
+                        <th>账号ID</th>
+                        <th>姓名</th>
+                        <th class="width150">身份证</th>
+                        <th>登录名</th>
+                        <th>状态</th>
+                        <th class="width100">创建日期</th>
+                        <th class="width150">上次登录时间</th>                                                        
+                        <th class="width200"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="tab">
+
+                    </tbody>
+                    <!--<tr>-->
+                        <!--<td>1</td>-->
+                        <!--<td><a href="account_detail.html">贾强</a></td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>jiaqiang</td>-->
+                        <!--<td>开通</td>-->
+                        <!--<td>2013-01-23</td>-->
+                        <!--<td>2013-02-23 00:00:00</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="暂停" class="btn_pause" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='account_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>2</td>-->
+                        <!--<td><a href="account_detail.html">贾强</a></td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>jiaqiang</td>-->
+                        <!--<td>暂停</td>-->
+                        <!--<td>2013-01-23</td>-->
+                        <!--<td>2013-02-23 00:00:00</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="开通" class="btn_start" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='account_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>3</td>-->
+                        <!--<td><a href="account_detail.html">贾强</a></td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>jiaqiang</td>-->
+                        <!--<td>删除</td>-->
+                        <!--<td>2013-01-23</td>-->
+                        <!--<td>2013-02-23 00:00:00</td>                            -->
+                        <!--<td class="td_modi">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>4</td>-->
+                        <!--<td><a href="account_detail.html">贾强</a></td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>jiaqiang</td>-->
+                        <!--<td>开通</td>-->
+                        <!--<td>2013-01-23</td>-->
+                        <!--<td>2013-02-23 00:00:00</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="暂停" class="btn_pause" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='account_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>5</td>-->
+                        <!--<td><a href="account_detail.html">贾强</a></td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>jiaqiang</td>-->
+                        <!--<td>暂停</td>-->
+                        <!--<td>2013-01-23</td>-->
+                        <!--<td>2013-02-23 00:00:00</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="开通" class="btn_start" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='account_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>                    -->
+                </table>
+                <p>业务说明：<br />
+                1、创建则开通，记载创建时间；<br />
+                2、暂停后，记载暂停时间；<br />
+                3、重新开通后，删除暂停时间；<br />
+                4、删除后，记载删除时间，标示为删除，不能再开通、修改、删除；<br />
+                5、暂停账务账号，同时暂停下属的所有业务账号；<br />                
+                6、暂停后重新开通账务账号，并不同时开启下属的所有业务账号，需要在业务账号管理中单独开启；<br />
+                7、删除账务账号，同时删除下属的所有业务账号。</p>
+                </div>                   
+                <!--分页-->
+                <div id="pageX">
+                    <!--<a href="#">首页</a>-->
+        	        <!--<a href="#">上一页</a>-->
+                    <!--<a href="#" class="current_page">1</a>-->
+                    <!--<a href="#">2</a>-->
+                    <!--<a href="#">3</a>-->
+                    <!--<a href="#">4</a>-->
+                    <!--<a href="#">5</a>-->
+                    <!--<a href="#">下一页</a>-->
+                    <!--<a href="#">末页</a>-->
+                </div>                    
+            <!--</form>-->
+        </div>
+        <!--主要区域结束-->
+        <div id="footer">
+            <p>[源自北美的技术，最优秀的师资，最真实的企业环境，最适用的实战项目]</p>
+            <p>版权所有(C)云科技有限公司 </p>
+        </div>
+    </body>
+
+<script src="/js/jquery-3.2.1.js"></script>
+<script>
+
+
+    // 将时间戳修改为日期类型
+    function getLocalTime(jsondate) {
+        if(jsondate!==null&&jsondate.toString().length>0){
+            jsondate=""+jsondate+"";//因为jsonDate是number型的indexOf会报错
+            if (jsondate.indexOf("+") > 0) {
+                jsondate = jsondate.substring(0, jsondate.indexOf("+"));
+            }
+            else if (jsondate.indexOf("-") > 0) {
+                jsondate = jsondate.substring(0, jsondate.indexOf("-"));
+            }
+            var date = new Date(parseInt(jsondate, 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+            var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+            return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds;
+        }
+    }
+
+
+
+    <!--添加tr的方法-->
+    function addNewTrAccount(account) {
+        var td1 = $("<td></td>").html(account.accountId);
+        var td2 = $("<td></td>");
+        $("<a href='/td2realName'></a>").html(account.realName).appendTo(td2);
+        var td3 = $("<td></td>").html(account.idcardNo);
+        var td4 = $("<td></td>").html(account.loginName);
+        var td5 = $("<td></td>").html(account.status);
+        var td6 = $("<td></td>").html(getLocalTime(account.createDate));
+        var td7 = $("<td></td>").html(account.lastLoginTime);
+        var td8 = $("<td></td>");
+
+        $("<input type='button' value='启用' class='btn_start'  />").click(startAccount).attr("accountId",account.accountId).appendTo(td8);
+        $("<input type='button' value='修改' class='btn_modify' />").click(updataAccount).attr("accountId",account.accountId).appendTo(td8);
+        $("<input type='button' value='删除' class='btn_delete' />").click(delAccount).attr("accountId",account.accountId).appendTo(td8);
+
+
+//        if (i == 1){
+//
+//            $("<input type='button' value='启用' class='btn_start'  />").click(startAccount).attr("accountId",account.accountId).appendTo(td8);
+//            $("<input type='button' value='修改' class='btn_modify' />").click(updataAccount).attr("accountId",account.accountId).appendTo(td8);
+//            $("<input type='button' value='删除' class='btn_delete' />").click(delAccount).attr("accountId",account.accountId).appendTo(td8);
+//
+//        }
+//
+//        if (i == 0){
+//
+//            $("<input type='button' value='启用' class='btn_start'  />").click(startAccount).attr("accountId",account.accountId).appendTo(td8);
+//            $("<input type='button' value='修改' class='btn_modify' />").click(updataAccount).attr("accountId",account.accountId).appendTo(td8);
+//            $("<input type='button' value='删除' class='btn_delete' />").click(delAccount).attr("accountId",account.accountId).appendTo(td8);
+//
+//        }
+//
+//        if (i == 2){
+//
+//            $("<input type='button' value='启用' class='btn_start'  />").click(startAccount).attr("accountId",account.accountId).appendTo(td8);
+//            $("<input type='button' value='修改' class='btn_modify' />").click(updataAccount).attr("accountId",account.accountId).appendTo(td8);
+//            $("<input type='button' value='删除' class='btn_delete' />").click(delAccount).attr("accountId",account.accountId).appendTo(td8);
+//
+//        }
+
+        var trob = $("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8)
+                .attr("id","trname"+account.accountId);
+
+        $("#tab").append(trob);
+
+    }
+
+
+    <!--查找数据库并显示-->
+    function getAllAccount() {
+        $.ajax({
+
+            url:"/findAccount",
+            type:"post",
+            success:function (result) {
+                $.each(result.data, function (i, domEle) {
+                    addNewTrAccount(domEle);
+                })
+            }
+
+        })
+    }
+
+//    getAllAccount();
+
+//    排序按钮的点击事件
+    function sort(btnObj) {
+        if (btnObj.className == "sort_desc")
+            btnObj.className = "sort_asc";
+        else
+            btnObj.className = "sort_desc";
+    }
+
+
+    function startAccount() {
+        var r = window.confirm("确定要启用此账号吗？账号启用后将不能修改和删除。");
+
+        var sid = $(this).attr("accountId");
+        var pageNum = $(this.attr("pageNum");
+
+
+        if (r == true){
+
+            $.ajax({
+
+                url:"/startAccount",
+                data:{
+                    sid:sid
+                },
+                success:function (result) {
+                    console.log(result.message);
+
+                    separatePages(pageNum)
+
+                }
+            })
+        }
+
+    }
+
+
+
+
+//    删除
+    function delAccount() {
+
+        var r = window.confirm("确定要删除此账号吗?");
+
+        var did = $(this).attr("accountId");
+
+        if (r == true){
+
+            document.getElementById("operate_result_info").style.display = "block";
+
+            $.ajax({
+                url:"/delAccount",
+                data:{
+                    aid:did
+                },
+                success:function (result) {
+                    console.log(did);
+                    $("#trname"+did).remove();
+                }
+
+
+            })
+
+        }
+
+
+    }
+
+
+    function updataAccount() {
+
+        var upaid = $(this).attr("accountId");
+
+        console.log(upaid);
+
+        $.ajax({
+
+            url:"/saveIdInSession",
+            type:"post",
+            data:{
+                updataAId:upaid
+            },
+            success:function (result) {
+                console.log(result.message);
+                window.location.href="/modifyAccount"
+            }
+
+        })
+
+    }
+
+    
+    
+
+
+//    分页
+    function separatePages(pageNo) {
+        $.ajax({
+            url:"/accountpageinfo",
+            type:"post",
+            data:{
+                no:pageNo,
+                size:5
+            },
+            success:function (result) {
+                console.log(result.message);
+//                要进行一下页面内容(tbody id=tab)和页面导航(span id=pageX)的清空
+                $("#tab").children().remove();
+                $("#pageX").children().remove();
+
+                var accountPageInfo = result.data;
+
+                var costListPresent = accountPageInfo.list;
+                console.log(accountPageInfo.list);
+                for (var i=0;i<costListPresent.length;i++){
+                    addNewTrAccount(costListPresent[i])
+                }
+//                分页导航栏:
+//                (1)上一页
+                if (accountPageInfo.isFirstPage){
+                    var prePage = $("<a></a>").html("上一页")
+                }else{
+                    var preNo = accountPageInfo.prePage;
+                    var prePage = $("<a></a>").html("上一页").attr("id","pageNo"+preNo).click(toClickPage);
+                }
+                $("#pageX").append(prePage);
+//                (2)页码
+                for (var i=0;i<accountPageInfo.pages;i++){
+//                    设置页码1,2,3...
+                    var pageNoX=$("<a></a>").html(i+1).attr("id","pageNo"+(i+1)).click(toClickPage);
+//                    为当前也添加背景属性,以做区分
+                    if ((i+1)==accountPageInfo.pageNum){
+                        pageNoX.attr("class","current_page")
+                    }
+//                    将页码填入分页导航栏
+                    $("#pageX").append(pageNoX)
+                }
+//                (3)下一页
+                if (accountPageInfo.isLastPage){
+                    var nextPage = $("<a></a>").html("下一页")
+                }else {
+                    var nextNo = accountPageInfo.nextPage;
+                    var nextPage = $("<a></a>").html("下一页").attr("id","pageNo"+nextNo).click(toClickPage);
+                }
+                $("#pageX").append(nextPage);
+            }
+
+        })
+    }
+    separatePages(1);
+
+//    跳转到点击的页面
+    function toClickPage() {
+        var pageNo = $(this).attr("id").slice(6);
+        console.log(pageNo);
+        if ($(this).attr("sortType")==null){
+            console.log(pageNo);
+            separatePages(pageNo)
+        }else {
+            var type = $(this).attr("sorType");
+            var order = $(this).attr("sortOrder");
+            sorting(type,order,pageNo)
+        }
+    }
+</script>
+</html>
+
