@@ -23,7 +23,7 @@
     from service
     where service_id = #{serviceId,jdbcType=INTEGER}
   </select>
-    <select id="findServicelist" resultMap="BaseResultMap">
+    <select id="findService" resultMap="BaseResultMap">
       SELECT
       <include refid="Base_Column_List" />
       FROM service
