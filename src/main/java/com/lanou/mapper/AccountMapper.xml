@@ -39,7 +39,14 @@
     <include refid="Base_Column_List" />
      FROM account
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="findAccountIdCard" resultType="com.lanou.bean.Account">
+
+      SELECT
+      <include refid="Base_Column_List" />
+      FROM account
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from account
     where account_id = #{accountId,jdbcType=INTEGER}
   </delete>

@@ -89,6 +89,7 @@ public class AccountController {
         accountService.findAccountById(accountId);
 
         return new AjaxResult("开通");
+
     }
 
     @ResponseBody
@@ -173,6 +174,15 @@ public class AccountController {
         System.out.println(accountById);
 
         return new AjaxResult(accountById);
+    }
+
+    @Resource
+    @RequestMapping(value = "/queryIdCard")
+    public AjaxResult queryIdCard(String idcardNo){
+
+        accountService.findidcardNo(idcardNo);
+
+        return new AjaxResult();
     }
 
 

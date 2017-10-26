@@ -1,14 +1,22 @@
 package com.lanou.service;
 
 import com.github.pagehelper.PageInfo;
-import org.springframework.stereotype.Service;
+import com.lanou.bean.Service;
+
 
 /**
  * Created by dllo on 17/10/26.
  */
 public interface ServiceService {
 
-    PageInfo<Service> pageinfo2(Integer pagesize);
+    int addService(Service service);
 
-    PageInfo<Service> queryStudentBuPage(Integer pageNo,Integer pageSize);
+    int delService(Integer serivceId);
+
+    int updataService(Service service);
+
+    Service findServiceById(Integer ServiceId);
+
+
+
 }

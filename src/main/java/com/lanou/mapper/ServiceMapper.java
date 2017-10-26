@@ -18,5 +18,5 @@ public interface ServiceMapper {
 
     int updateByPrimaryKey(Service record);
 
-    List<Service> findServicelist();
+    List<Service> findService();
 }

@@ -41,6 +41,10 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    public List<Account> findidcardNo(String idcardNo) {
+        return accountMapper.findAccountIdCard(idcardNo);
+    }
+
 
     public PageInfo<Account> accountPageinfo(Integer pageNo, Integer pageSize) {
 

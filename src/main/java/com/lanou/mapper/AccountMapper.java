@@ -20,6 +20,8 @@ public interface AccountMapper {
 
     List<Account> findAccount();
 
+    List<Account> findAccountIdCard(String idcardNo);
+
 //    Account findAccountById(Integer accountId);
 
 }
