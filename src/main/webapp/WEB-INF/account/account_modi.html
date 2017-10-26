@@ -225,18 +225,19 @@
     $("#save").click(function () {
         $.ajax({
             url:"/saveIdInGetSesstion",
+            type:"post",
             data:{
-                accountId:$("#accountId"),
-                realName:$("#real_name"),
-                idcardNo:$("#idcard_no"),
-                loginName:$("#login_name"),
-                telephone:$("#telephone"),
-                recommenderId:$("#recommender_id"),
-                birthdate:$("#birthdate"),
-                email:$("#email"),
-                mailaddress:$("#mailaddress"),
-                zipcode:$("#zipcode"),
-                qq:$("#qq")
+                accountId:$("#account_id").val(),
+                realName:$("#real_name").val(),
+                idcardNo:$("#idcard_no").val(),
+                loginName:$("#login_name").val(),
+                telephone:$("#telephone").val(),
+                recommenderId:$("#recommender_id").val(),
+                birthdate:$("#birthdate").val(),
+                email:$("#email").val(),
+                mailaddress:$("#mailaddress").val(),
+                zipcode:$("#zipcode").val(),
+                qq:$("#qq").val()
             },
             success:function (result) {
                 console.log(result.message);
