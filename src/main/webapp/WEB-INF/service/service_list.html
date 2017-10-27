@@ -7,24 +7,24 @@
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global_color.css" />
         <script language="javascript" type="text/javascript">
             //显示角色详细信息
-            function showDetail(flag, a) {
-                var detailDiv = a.parentNode.getElementsByTagName("div")[0];
-                if (flag) {
-                    detailDiv.style.display = "block";
-                }
-                else
-                    detailDiv.style.display = "none";
-            }
+//            function showDetail(flag, a) {
+//                var detailDiv = a.parentNode.getElementsByTagName("div")[0];
+//                if (flag) {
+//                    detailDiv.style.display = "block";
+//                }
+//                else
+//                    detailDiv.style.display = "none";
+//            }
             //删除
-            function deleteAccount() {
-                var r = window.confirm("确定要删除此业务账号吗？删除后将不能恢复。");
-                document.getElementById("operate_result_info").style.display = "block";
-            }
+//            function deleteAccount() {
+//                var r = window.confirm("确定要删除此业务账号吗？删除后将不能恢复。");
+//                document.getElementById("operate_result_info").style.display = "block";
+//            }
             //开通或暂停
-            function setState() {
-                var r = window.confirm("确定要开通此业务账号吗？");
-                document.getElementById("operate_result_info").style.display = "block";
-            }
+//            function setState() {
+//                var r = window.confirm("确定要开通此业务账号吗？");
+//                document.getElementById("operate_result_info").style.display = "block";
+//            }
         </script>
     </head>
     <body>
@@ -52,7 +52,7 @@
         <!--导航区域结束-->
         <!--主要区域开始-->
         <div id="main">
-            <form action="" method="">
+            <!--<form action="" method="">-->
                 <!--查询-->
                 <div class="search_add">                        
                     <div>OS 账号：<input type="text" value="" class="width100 text_search" /></div>                            
@@ -67,13 +67,13 @@
                         </select>
                     </div>
                     <div><input type="button" value="搜索" class="btn_search" /></div>
-                    <input type="button" value="增加" class="btn_add" onclick="location.href='service_add.html';" />
+                    <input type="button" value="增加" class="btn_add" onclick="location.href='/serviceAdd';" />
                 </div>  
                 <!--删除的操作提示-->
-                <div id="operate_result_info" class="operate_success">
-                    <img src="../images/close.png" onclick="this.parentNode.style.display='none';" />
-                    删除成功！
-                </div>   
+                <!--<div id="operate_result_info" class="operate_success">-->
+                    <!--<img src="../images/close.png" onclick="this.parentNode.style.display='none';" />-->
+                    <!--删除成功！-->
+                <!--</div>   -->
                 <!--数据区域：用表格展示数据-->     
                 <div id="data">            
                     <table id="datalist">
@@ -88,108 +88,108 @@
                         <th class="width100">资费</th>                                                        
                         <th class="width200"></th>
                     </tr>
-                    <tr>
-                        <td><a href="service_detail.html" title="查看明细">1</a></td>
-                        <td>101</td>
-                        <td>230102197902137862</td>
-                        <td>张三</td>
-                        <td>openlab1</td>
-                        <td>开通</td>
-                        <td>192.168.0.23</td>
-                        <td>
-                            <a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 20 小时</a>
-                            <!--浮动的详细信息-->
-                            <div class="detail_info">
-                                20小时，24.5 元，超出部分 0.03元/分钟
-                            </div>
-                        </td>                            
-                        <td class="td_modi">
-                            <input type="button" value="暂停" class="btn_pause" onclick="setState();" />
-                            <input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />
-                            <input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="service_detail.html" title="查看明细">2</a></td>
-                        <td>101</td>
-                        <td>230102197902137862</td>
-                        <td>张三</td>
-                        <td>openlab2</td>
-                        <td>暂停</td>
-                        <td>192.168.100.20</td>
-                        <td>
-                            <a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 40 小时</a>
-                            <!--浮动的详细信息-->
-                            <div class="detail_info">
-                                40小时，40.5 元，超出部分 0.03元/分钟
-                            </div>
-                        </td>                            
-                        <td class="td_modi">
-                            <input type="button" value="开通" class="btn_start" onclick="setState();" />
-                            <input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />
-                            <input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="service_detail.html" title="查看明细">3</a></td>
-                        <td>101</td>
-                        <td>230102197902137862</td>
-                        <td>张三</td>
-                        <td>openlab3</td>
-                        <td>删除</td>
-                        <td>192.168.10.23</td>
-                        <td>
-                            <a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 60 小时</a>
-                            <!--浮动的详细信息-->
-                            <div class="detail_info">
-                                60小时，55 元，超出部分 0.03元/分钟
-                            </div>
-                        </td>                            
-                        <td class="td_modi">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="service_detail.html" title="查看明细">4</a></td>
-                        <td>102</td>
-                        <td>230102197902111111</td>
-                        <td>李四</td>
-                        <td>openlab1</td>
-                        <td>开通</td>
-                        <td>192.168.0.23</td>
-                        <td>
-                            <a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 20 小时</a>
-                            <!--浮动的详细信息-->
-                            <div class="detail_info">
-                                20小时，24.5 元，超出部分 0.03元/分钟
-                            </div>
-                        </td>                            
-                        <td class="td_modi">
-                            <input type="button" value="暂停" class="btn_pause" onclick="setState();" />
-                            <input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />
-                            <input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="service_detail.html" title="查看明细">5</a></td>
-                        <td>102</td>
-                        <td>230102197902137862</td>
-                        <td>张三</td>
-                        <td>openlab1</td>
-                        <td>开通</td>
-                        <td>192.168.0.23</td>
-                        <td>
-                            <a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 20 小时</a>
-                            <!--浮动的详细信息-->
-                            <div class="detail_info">
-                                20小时，24.5 元，超出部分 0.03元/分钟
-                            </div>
-                        </td>                            
-                        <td class="td_modi">
-                            <input type="button" value="暂停" class="btn_pause" onclick="setState();" />
-                            <input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />
-                            <input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />
-                        </td>
-                    </tr>                                                                
+                    <!--<tr>-->
+                        <!--<td><a href="service_detail.html" title="查看明细">1</a></td>-->
+                        <!--<td>101</td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>张三</td>-->
+                        <!--<td>openlab1</td>-->
+                        <!--<td>开通</td>-->
+                        <!--<td>192.168.0.23</td>-->
+                        <!--<td>-->
+                            <!--<a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 20 小时</a>-->
+                            <!--&lt;!&ndash;浮动的详细信息&ndash;&gt;-->
+                            <!--<div class="detail_info">-->
+                                <!--20小时，24.5 元，超出部分 0.03元/分钟-->
+                            <!--</div>-->
+                        <!--</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="暂停" class="btn_pause" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><a href="service_detail.html" title="查看明细">2</a></td>-->
+                        <!--<td>101</td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>张三</td>-->
+                        <!--<td>openlab2</td>-->
+                        <!--<td>暂停</td>-->
+                        <!--<td>192.168.100.20</td>-->
+                        <!--<td>-->
+                            <!--<a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 40 小时</a>-->
+                            <!--&lt;!&ndash;浮动的详细信息&ndash;&gt;-->
+                            <!--<div class="detail_info">-->
+                                <!--40小时，40.5 元，超出部分 0.03元/分钟-->
+                            <!--</div>-->
+                        <!--</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="开通" class="btn_start" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><a href="service_detail.html" title="查看明细">3</a></td>-->
+                        <!--<td>101</td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>张三</td>-->
+                        <!--<td>openlab3</td>-->
+                        <!--<td>删除</td>-->
+                        <!--<td>192.168.10.23</td>-->
+                        <!--<td>-->
+                            <!--<a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 60 小时</a>-->
+                            <!--&lt;!&ndash;浮动的详细信息&ndash;&gt;-->
+                            <!--<div class="detail_info">-->
+                                <!--60小时，55 元，超出部分 0.03元/分钟-->
+                            <!--</div>-->
+                        <!--</td>                            -->
+                        <!--<td class="td_modi">-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><a href="service_detail.html" title="查看明细">4</a></td>-->
+                        <!--<td>102</td>-->
+                        <!--<td>230102197902111111</td>-->
+                        <!--<td>李四</td>-->
+                        <!--<td>openlab1</td>-->
+                        <!--<td>开通</td>-->
+                        <!--<td>192.168.0.23</td>-->
+                        <!--<td>-->
+                            <!--<a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 20 小时</a>-->
+                            <!--&lt;!&ndash;浮动的详细信息&ndash;&gt;-->
+                            <!--<div class="detail_info">-->
+                                <!--20小时，24.5 元，超出部分 0.03元/分钟-->
+                            <!--</div>-->
+                        <!--</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="暂停" class="btn_pause" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td><a href="service_detail.html" title="查看明细">5</a></td>-->
+                        <!--<td>102</td>-->
+                        <!--<td>230102197902137862</td>-->
+                        <!--<td>张三</td>-->
+                        <!--<td>openlab1</td>-->
+                        <!--<td>开通</td>-->
+                        <!--<td>192.168.0.23</td>-->
+                        <!--<td>-->
+                            <!--<a class="summary"  onmouseover="showDetail(true,this);" onmouseout="showDetail(false,this);">包 20 小时</a>-->
+                            <!--&lt;!&ndash;浮动的详细信息&ndash;&gt;-->
+                            <!--<div class="detail_info">-->
+                                <!--20小时，24.5 元，超出部分 0.03元/分钟-->
+                            <!--</div>-->
+                        <!--</td>                            -->
+                        <!--<td class="td_modi">-->
+                            <!--<input type="button" value="暂停" class="btn_pause" onclick="setState();" />-->
+                            <!--<input type="button" value="修改" class="btn_modify" onclick="location.href='service_modi.html';" />-->
+                            <!--<input type="button" value="删除" class="btn_delete" onclick="deleteAccount();" />-->
+                        <!--</td>-->
+                    <!--</tr>                                                                -->
                 </table>                
                 <p>业务说明：<br />
                 1、创建即开通，记载创建时间；<br />
@@ -211,7 +211,7 @@
                     <a href="#">下一页</a>
                     <a href="#">末页</a>
                 </div>                    
-            </form>
+            <!--</form>-->
         </div>
         <!--主要区域结束-->
         <div id="footer">
@@ -219,4 +219,63 @@
             <p>版权所有(C)云科技有限公司 </p>
         </div>
     </body>
+
+<script src="/js/jquery-3.2.1.js"></script>
+<script>
+
+    <!--添加tr的方法-->
+    function addNewTrService(service) {
+        var td1 = $("<td></td>");
+        $("<a href='/'></a>").html(service.serviceId).appendTo(td1);
+        var td2 = $("<td></td>").html(service.accountId);
+        var td3 = $("<td></td>").html(service.account.idcardNo);
+        var td4 = $("<td></td>").html(service.account.loginName);
+        var td5 = $("<td></td>").html(service.osUsername);
+        var td6 = $("<td></td>").html(service.status);
+        var td7 = $("<td></td>").html(service.unixHost);
+        var td8 = $("<td></td>").html(service.cost.name);
+        var td9 = $("<td></td>");
+
+        $("<input type='button' value='启用' class='btn_start'  />").appendTo(td9);//.click(startAccount).attr("serviceId",service.serviceId)
+        $("<input type='button' value='修改' class='btn_modify' />").appendTo(td9);//.click(updataAccount).attr("serviceId",service.serviceId)
+        $("<input type='button' value='删除' class='btn_delete' />").appendTo(td9);//.click(delAccount).attr("serviceId",service.serviceId)
+
+
+        var trob = $("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).append(td9)
+                .attr("id","trname"+service.serviceId);
+
+        $("#datalist").append(trob);
+
+    }
+
+
+
+    <!--查找数据库并显示-->
+    function getAllService() {
+        $.ajax({
+
+            url:"/findService",
+            type:"post",
+            success:function (result) {
+                $.each(result.data,function (i, domEle) {
+                    addNewTrService(domEle);
+                })
+            }
+
+        })
+    }
+
+    getAllService();
+
+
+    //    排序按钮的点击事件
+    function sort(btnObj) {
+        if (btnObj.className == "sort_desc")
+            btnObj.className = "sort_asc";
+        else
+            btnObj.className = "sort_desc";
+    }
+
+
+</script>
 </html>
