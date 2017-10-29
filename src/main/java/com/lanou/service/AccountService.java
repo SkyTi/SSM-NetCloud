@@ -2,30 +2,33 @@ package com.lanou.service;
 
 import com.github.pagehelper.PageInfo;
 import com.lanou.bean.Account;
+import com.lanou.bean.Service;
 
-import java.util.List;
 
-
-/**
- * Created by dllo on 17/10/23.
- */
 public interface AccountService {
 
-    int addAccount(Account account);
+    PageInfo<Account> pageinfo(Integer pageNo, Integer pageSize);
 
-    int delAccount(Integer accountId);
+    // 增加
 
-    int updataAccount(Account account);
+    boolean addAccount(Account account);
 
-    Account findAccountById(Integer AccountId);
+    // 通过id查询
 
-    List<Account> findidcardNo(String idcardNo);
+    Account selectById(int accountId);
 
-    PageInfo<Account> accountPageinfo(Integer pageNo,Integer pageSize);
+    // 修改状态
 
-    PageInfo<Account> pageinfo1(Integer pagesize);
+    boolean updateAccount(Account account);
 
-    PageInfo<Account> queryStudentBuPage(Integer pageNo, Integer pageSize);
+    // 模糊查询
+
+    PageInfo<Account> queryAccountByCondition(Integer pageNo, Integer pageSize,Account account);
+
+    // 通过身份号查找账务账户信息
+
+    Account findAccountByIdCardNo(String idcardNo);
+
 
 
 

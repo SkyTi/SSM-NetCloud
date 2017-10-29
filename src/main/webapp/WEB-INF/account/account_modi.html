@@ -2,32 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>云科技</title>
+        <title>修改财务账户</title>
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global.css" />
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global_color.css" />
-        <script src="/js/jquery-3.2.1.js"></script>
-        <script language="javascript" type="text/javascript">
-            //保存成功的提示信息
-            function showResult() {
-                showResultDiv(true);
-                window.setTimeout("showResultDiv(false);", 3000);
-            }
-            function showResultDiv(flag) {
-                var divResult = document.getElementById("save_result_info");
-                if (flag)
-                    divResult.style.display = "block";
-                else
-                    divResult.style.display = "none";
-            }
-
-            //显示修改密码的信息项
-            function showPwd(chkObj) {
-                if (chkObj.checked)
-                    document.getElementById("divPwds").style.display = "block";
-                else
-                    document.getElementById("divPwds").style.display = "none";
-            }
-        </script>
     </head>
     <body>
         <!--Logo区域开始-->
@@ -39,12 +16,17 @@
         <!--导航区域开始-->
         <div id="navi">
             <ul id="menu">
-                <li><a href="../index.html" class="index_off"></a></li>
-                <li><a href="../role/role_list.html" class="role_off"></a></li>
+                <!--<li><a href="../index.html" class="index_off"></a></li>-->
+                <li><a href="/index" class="index_off"></a></li>
+                <!--<li><a href="../role/role_list.html" class="role_off"></a></li>-->
+                <li><a href="/role/role_list" class="role_off"></a></li>
                 <li><a href="../admin/admin_list.html" class="admin_off"></a></li>
-                <li><a href="../fee/fee_list.html" class="fee_off"></a></li>
-                <li><a href="account_list.html" class="account_on"></a></li>
-                <li><a href="../service/service_list.html" class="service_off"></a></li>
+                <!--<li><a href="../fee/fee_list.html" class="fee_off"></a></li>-->
+                <li><a href="/fee/fee_list" class="fee_off"></a></li>
+                <!--<li><a href="../account/account_list.html" class="account_on"></a></li>-->
+                <li><a href="/account/account_list" class="account_on"></a></li>
+                <!--<li><a href="../service/service_list.html" class="service_off"></a></li>-->
+                <li><a href="/service/service_list" class="service_off"></a></li>
                 <li><a href="../bill/bill_list.html" class="bill_off"></a></li>
                 <li><a href="../report/report_list.html" class="report_off"></a></li>
                 <li><a href="../user/user_info.html" class="information_off"></a></li>
@@ -56,25 +38,24 @@
         <div id="main">  
             <!--保存成功或者失败的提示消息-->          
             <div id="save_result_info" class="save_fail">保存失败，旧密码错误！</div>
-            <!--<form action="" method="" class="main_form">-->
                     <!--必填项-->
                     <div class="text_info clearfix"><span>账务账号ID：</span></div>
                     <div class="input_info">
-                        <input type="text" value="" readonly class="readonly" id="accountId" />
+                        <input type="text" id="accountId" readonly class="readonly" />
                     </div>
                     <div class="text_info clearfix"><span>姓名：</span></div>
                     <div class="input_info">
-                        <input type="text" value="" id="realName"/>
+                        <input type="text" id="realName" />
                         <span class="required">*</span>
                         <div class="validate_msg_long error_msg">20长度以内的汉字、字母和数字的组合</div>
                     </div>
                     <div class="text_info clearfix"><span>身份证：</span></div>
                     <div class="input_info">
-                        <input type="text" value="" readonly class="readonly" id="idcardNo"/>
+                        <input type="text" id="idcardNo" readonly class="readonly" />
                     </div>
                     <div class="text_info clearfix"><span>登录账号：</span></div>
                     <div class="input_info">
-                        <input type="text" value="" readonly class="readonly"  id="loginName"/>
+                        <input type="text" id="loginName" readonly class="readonly"  />
                         <!--                
                         <div class="change_pwd">
                             <input id="chkModiPwd" type="checkbox" onclick="showPwd(this);" />
@@ -107,27 +88,27 @@
                     -->             
                     <div class="text_info clearfix"><span>电话：</span></div>
                     <div class="input_info">
-                        <input type="text" class="width200" value="" id="telephone"/>
+                        <input type="text" id="telephone" class="width200"/>
                         <span class="required">*</span>
                         <div class="validate_msg_medium error_msg">正确的电话号码格式：手机或固话</div>
                     </div>
                     <div class="text_info clearfix"><span>推荐人身份证号码：</span></div>
                     <div class="input_info">
-                        <input type="text" id="recommenderId"/>
+                        <input type="text"/>
                         <div class="validate_msg_long error_msgs">正确的身份证号码格式</div>
                     </div>
                     <div class="text_info clearfix"><span>生日：</span></div>
                     <div class="input_info">
-                        <input type="text" value="" readonly class="readonly" id="birthdate"/>
+                        <input type="text" value="由身份证号计算而来" readonly class="readonly" />
                     </div>
                     <div class="text_info clearfix"><span>Email：</span></div>
                     <div class="input_info">
-                        <input type="text" class="width200" id="email"/>
+                        <input type="text" id="email" class="width200"/>
                         <div class="validate_msg_medium">50长度以内，合法的 Email 格式</div>
                     </div> 
                     <div class="text_info clearfix"><span>职业：</span></div>
                     <div class="input_info">
-                        <select>
+                        <select id="occupation">
                             <option>干部</option>
                             <option>学生</option>
                             <option>技术人员</option>
@@ -135,7 +116,7 @@
                         </select>                        
                     </div>
                     <div class="text_info clearfix"><span>性别：</span></div>
-                    <div class="input_info fee_type">
+                    <div id="gender" class="input_info fee_type">
                         <input type="radio" name="radSex" checked="checked" id="female" onclick="feeTypeChange(1);" />
                         <label for="female">女</label>
                         <input type="radio" name="radSex" id="male" onclick="feeTypeChange(2);" />
@@ -143,7 +124,7 @@
                     </div> 
                     <div class="text_info clearfix"><span>通信地址：</span></div>
                     <div class="input_info">
-                        <input type="text" class="width350" id="mailaddress"/>
+                        <input type="text" id="mailaddress" class="width350"/>
                         <div class="validate_msg_tiny">50长度以内</div>
                     </div> 
                     <div class="text_info clearfix"><span>邮编：</span></div>
@@ -158,10 +139,10 @@
                     </div>                
                     <!--操作按钮-->
                     <div class="button_info clearfix">
-                        <input type="button" value="保存" class="btn_save" onclick="showResult();" id="save" />
-                        <input type="button" value="取消" class="btn_save" />
+                        <input type="button" value="保存" class="btn_save" onclick="showResult();" />
+                        <input type="button" value="取消" class="btn_save" onclick="location.href='/account/account_list';"/>
                     </div>
-                <!--</form>  -->
+
         </div>
         <!--主要区域结束-->
         <div id="footer">
@@ -170,107 +151,76 @@
             <span>版权所有(C)云科技有限公司 </span>
         </div>
     </body>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script language="javascript" type="text/javascript">
+        // 修改的信息回显
+        function selectById() {
+            $.ajax({
+                type: "POST",
+                url: "/selectbyaccountid",
+                success:function (request) {
+                    $("#accountId").val(request.data.accountId);
+                    $("#realName").val(request.data.realName);
+                    $("#idcardNo").val(request.data.idcardNo);
+                    $("#loginName").val(request.data.loginName);
+                    $("#telephone").val(request.data.telephone);
+                    $("#email").val(request.data.email);
+                    $("#zipcode").val(request.data.zipcode);
+                    $("#mailaddress").val(request.data.mailaddress);
+                    $("#qq").val(request.data.qq);
+                    $("#occupation").val(request.data.occupation);
+                    $("#gender").val(request.data.gender);
+                }
+            });
+        }
+        selectById();
 
-<script src="/js/jquery-3.2.1.js"></script>
-<script>
+        // 更新数据
+        function showResult() {
 
-//    <!--回显-->
-//    function getAccountByS(accountId) {
-//        $.ajax({
-//
-//            url:"/saveIdInSession",
-//            type:"post",
-//            async:false,
-//            data:{
-//
-//                accountId:accountId
-//            },
-//            success:function (result) {
-//                console.log(result.message);
-//            },
-//        })
-//
-//    }
-//    getAccountByS();
-
-
-//    <!--通过I的修改信息-->
-//    function getAccountByIdInSession() {
-//        $.ajax({
-//            url:"/XXX",
-//            type:"post",
-//            success:function (result) {
-//                console.log(result.data);
-//                var account = result.data;
-////                $("#accountId").val(account.accountId);
-//                $("#realName").val(account.realName);
-////                $("#idcardNo").val(account.idcardNo);
-////                $("#loginName").val(account.loginName);
-//                $("#telephone").val(account.telephone);
-//                $("#recommenderId").val(account.recommenderId);
-////                $("#birthdate").val(account.birthdate);
-//                $("#email").val(account.email);
-//                $("#mailaddress").val(account.mailaddress);
-//                $("#zipcode").val(account.zipcode);
-//                $("#qq").val(account.qq);
-//            }
-//
-//
-//        })
-//    }
-//
-//    getAccountByIdInSession();
-
-//    提交修改信息
-    $("#save").click(function () {
-        $.ajax({
-            url:"/saveIdInGetSesstion",
-            type:"post",
-            data:{
-                accountId:$("#account_id").val(),
-                realName:$("#real_name").val(),
-                idcardNo:$("#idcard_no").val(),
-                loginName:$("#login_name").val(),
-                telephone:$("#telephone").val(),
-                recommenderId:$("#recommender_id").val(),
-                birthdate:$("#birthdate").val(),
-                email:$("#email").val(),
-                mailaddress:$("#mailaddress").val(),
-                zipcode:$("#zipcode").val(),
-                qq:$("#qq").val()
-            },
-            success:function (result) {
-                console.log(result.message);
-                window.location.href="/accountList"
+            var gender = null;
+            if ($("female").checked==true) {
+                gender = "女"
+            } else {
+                gender = "男"
             }
 
-        })
-    });
+            $.ajax({
+                type: "post",
+                url: "/updataccountbyid",
+                data: {
+                    // 注意:id, 身份证和登录账户名是不能修改的
+                    realName: $("#realName").val(),
+                    telephone: $("#telephone").val(),
+                    email: $("#email").val(),
+                    gender: gender,
+                    mailaddress: $("#mailaddress").val(),
+                    zipcode: $("#zipcode").val(),
+                    qq: $("#qq").val(),
+                    occupation: $("#occupation").val()
+                },success:function (result) {
+                    if (result.data == 1) {
+                        window.location.href = '/account/account_list';
+                    }
+                }
+            })
+        }
 
-//    回显
-    function getAccountIdInSession() {
-        $.ajax({
-            url:"/saveIdInGetSesstion",
-            type:"post",
-            success:function (result) {
-                console.log(result.data);
-                var account = result.data;
-                $("#accountId").val(account.accountId);
-                $("#realName").val(account.realName);
-                $("#idcardNo").val(account.idcardNo);
-                $("#loginName").val(account.loginName);
-                $("#telephone").val(account.telephone);
-                $("#recommenderId").val(account.recommenderId);
-                $("#birthdate").val(account.birthdate);
-                $("#email").val(account.email);
-                $("#mailaddress").val(account.mailaddress);
-                $("#zipcode").val(account.zipcode);
-                $("#qq").val(account.qq);
-            }
 
-        })
-    }
+        function showResultDiv(flag) {
+            var divResult = document.getElementById("save_result_info");
+            if (flag)
+                divResult.style.display = "block";
+            else
+                divResult.style.display = "none";
+        }
 
-    getAccountIdInSession();
-</script>
+        //显示修改密码
+        function showPwd(chkObj) {
+            if (chkObj.checked)
+                document.getElementById("divPwds").style.display = "block";
+            else
+                document.getElementById("divPwds").style.display = "none";
+        }
+    </script>
 </html>

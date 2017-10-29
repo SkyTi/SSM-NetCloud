@@ -1,9 +1,9 @@
 package com.lanou.mapper;
 
 import com.lanou.bean.Service;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
 
 public interface ServiceMapper {
     int deleteByPrimaryKey(Integer serviceId);
@@ -18,5 +18,21 @@ public interface ServiceMapper {
 
     int updateByPrimaryKey(Service record);
 
-    List<Service> findService();
+    // 查找所有业务账户信息
+
+    List<Service> findAllService();
+
+    // 查询全部业务账号
+
+    List<Service> findAllServices();
+
+    // 条件查询业务账号
+
+    List<Service> findServiceByCondition(
+            @Param("status") String status,
+            @Param("osUsername") String osUsername,
+            @Param("unixHost") String unixHost,
+            @Param("idcardNo") String idcardNo
+    );
+
 }

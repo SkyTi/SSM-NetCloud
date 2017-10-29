@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllo on 17/10/13.
+ * 这个类用来使用插件批量生成实体类以及基础的sql语句
+ * @author dllo
+ * @date 2017/10/13
  */
 public class GenTest {
 
-    public void generator() throws Exception{
-        List<String> warnings = new ArrayList<String>();
+    public void generator() throws Exception {
+        List<String> warnings = new ArrayList<>();
         boolean overwrite = true;
         //指定 逆向工程配置文件
         File configFile = new File("src/main/resources/generatorConfig.xml");
@@ -27,17 +29,16 @@ public class GenTest {
         myBatisGenerator.generate(null);
     }
 
+    public static void main(String[] args) {
 
-//    public static void main(String[] args) {
-//
-//        try {
-//            GenTest genTest = new GenTest();
-//
-//            genTest.generator();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
+        try {
+            GenTest genTest = new GenTest();
+            genTest.generator();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

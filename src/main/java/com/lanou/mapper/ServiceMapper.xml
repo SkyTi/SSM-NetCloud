@@ -12,6 +12,14 @@
     <result column="pause_date" jdbcType="TIMESTAMP" property="pauseDate" />
     <result column="close_date" jdbcType="TIMESTAMP" property="closeDate" />
     <result column="cost_id" jdbcType="INTEGER" property="costId" />
+    <association property="account"
+                 column="account_id"
+                 javaType="com.lanou.bean.Account"
+                 select="com.lanou.mapper.AccountMapper.selectByPrimaryKey"/>
+    <association property="cost"
+                 column="cost_id"
+                 javaType="com.lanou.bean.Cost"
+                 select="com.lanou.mapper.CostMapper.selectByPrimaryKey"/>
   </resultMap>
   <sql id="Base_Column_List">
     service_id, account_id, unix_host, os_username, login_passwd, status, create_date, 
@@ -23,12 +31,40 @@
     from service
     where service_id = #{serviceId,jdbcType=INTEGER}
   </select>
-    <select id="findService" resultMap="BaseResultMap">
-      SELECT
-      <include refid="Base_Column_List" />
-      FROM service
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+  <select id="findAllService" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM service
+  </select>
+
+  <select id="findAllServices" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM service
+  </select>
+
+  <select id="findServiceByCondition" resultMap="BaseResultMap">
+
+    SELECT <include refid="Base_Column_List"/>
+    FROM service
+    <where>
+      <if test="osUsername != ''">
+        AND  os_username LIKE CONCAT('%',#{osUsername},'%')
+      </if>
+      <if test="unixHost != ''">
+        AND unix_host LIKE CONCAT('%',#{unixHost},'%')
+      </if>
+      <if test="idcardNo != ''">
+        AND account_id IN (SELECT account_id from account where idcard_no=#{idcardNo})
+      </if>
+      <if test="status != ''">
+        AND status=#{status}
+      </if>
+    </where>
+
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from service
     where service_id = #{serviceId,jdbcType=INTEGER}
   </delete>

@@ -2,30 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title></title>
+        <title>查看业务账号</title>
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global.css" />
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global_color.css" />
-        <script language="javascript" type="text/javascript">
-            //显示角色详细信息
-//            function showDetail(flag, a) {
-//                var detailDiv = a.parentNode.getElementsByTagName("div")[0];
-//                if (flag) {
-//                    detailDiv.style.display = "block";
-//                }
-//                else
-//                    detailDiv.style.display = "none";
-//            }
-            //删除
-//            function deleteAccount() {
-//                var r = window.confirm("确定要删除此业务账号吗？删除后将不能恢复。");
-//                document.getElementById("operate_result_info").style.display = "block";
-//            }
-            //开通或暂停
-//            function setState() {
-//                var r = window.confirm("确定要开通此业务账号吗？");
-//                document.getElementById("operate_result_info").style.display = "block";
-//            }
-        </script>
     </head>
     <body>
         <!--Logo区域开始-->
@@ -37,12 +16,17 @@
         <!--导航区域开始-->
         <div id="navi">                        
             <ul id="menu">
-                <li><a href="../index.html" class="index_off"></a></li>
-                <li><a href="../role/role_list.html" class="role_off"></a></li>
+                <!--<li><a href="../index.html" class="index_off"></a></li>-->
+                <li><a href="/index" class="index_off"></a></li>
+                <!--<li><a href="../role/role_list.html" class="role_off"></a></li>-->
+                <li><a href="/role/role_list" class="role_off"></a></li>
                 <li><a href="../admin/admin_list.html" class="admin_off"></a></li>
-                <li><a href="../fee/fee_list.html" class="fee_off"></a></li>
-                <li><a href="../account/account_list.html" class="account_off"></a></li>
-                <li><a href="../service/service_list.html" class="service_on"></a></li>
+                <!--<li><a href="../fee/fee_list.html" class="fee_off"></a></li>-->
+                <li><a href="/fee/fee_list" class="fee_off"></a></li>
+                <!--<li><a href="../account/account_list.html" class="account_off"></a></li>-->
+                <li><a href="/account/account_list" class="account_off"></a></li>
+                <!--<li><a href="../service/service_list.html" class="service_on"></a></li>-->
+                <li><a href="/service/service_list" class="service_on"></a></li>
                 <li><a href="../bill/bill_list.html" class="bill_off"></a></li>
                 <li><a href="../report/report_list.html" class="report_off"></a></li>
                 <li><a href="../user/user_info.html" class="information_off"></a></li>
@@ -52,28 +36,28 @@
         <!--导航区域结束-->
         <!--主要区域开始-->
         <div id="main">
-            <!--<form action="" method="">-->
+            <form action="" method="">
                 <!--查询-->
                 <div class="search_add">                        
-                    <div>OS 账号：<input type="text" value="" class="width100 text_search" /></div>                            
-                    <div>服务器 IP：<input type="text" value="" class="width100 text_search" /></div>
-                    <div>身份证：<input type="text"  value="" class="text_search" /></div>
+                    <div>OS 账号：<input type="text" id="osname" class="width100 text_search" /></div>
+                    <div>服务器 IP：<input type="text" id="ip" class="width100 text_search" /></div>
+                    <div>身份证：<input type="text" id="idcard" class="text_search" /></div>
                     <div>状态：
-                        <select class="select_search">
+                        <select id="stas" class="select_search">
                             <option>全部</option>
                             <option>开通</option>
                             <option>暂停</option>
                             <option>删除</option>
                         </select>
                     </div>
-                    <div><input type="button" value="搜索" class="btn_search" /></div>
-                    <input type="button" value="增加" class="btn_add" onclick="location.href='/serviceAdd';" />
+                    <div><input type="button" value="搜索" onclick="fuzzyquery()" class="btn_search" /></div>
+                    <input type="button" value="增加" class="btn_add" onclick="location.href='/service/service_add';" />
                 </div>  
                 <!--删除的操作提示-->
-                <!--<div id="operate_result_info" class="operate_success">-->
-                    <!--<img src="../images/close.png" onclick="this.parentNode.style.display='none';" />-->
-                    <!--删除成功！-->
-                <!--</div>   -->
+                <div id="operate_result_info" class="operate_success">
+                    <img src="../images/close.png" onclick="this.parentNode.style.display='none';" />
+                    删除成功！
+                </div>   
                 <!--数据区域：用表格展示数据-->     
                 <div id="data">            
                     <table id="datalist">
@@ -201,17 +185,17 @@
                 </div>                    
                 <!--分页-->
                 <div id="pages">
-                    <a href="#">首页</a>
-        	        <a href="#">上一页</a>
-                    <a href="#" class="current_page">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">下一页</a>
-                    <a href="#">末页</a>
+                    <!--<a href="#">首页</a>-->
+        	        <!--<a href="#">上一页</a>-->
+                    <!--<a href="#" class="current_page">1</a>-->
+                    <!--<a href="#">2</a>-->
+                    <!--<a href="#">3</a>-->
+                    <!--<a href="#">4</a>-->
+                    <!--<a href="#">5</a>-->
+                    <!--<a href="#">下一页</a>-->
+                    <!--<a href="#">末页</a>-->
                 </div>                    
-            <!--</form>-->
+            </form>
         </div>
         <!--主要区域结束-->
         <div id="footer">
@@ -219,63 +203,296 @@
             <p>版权所有(C)云科技有限公司 </p>
         </div>
     </body>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script language="javascript" type="text/javascript">
+        // 添加tr的方法
+        function addNewTr(service) {
+            var td1 = $("<td></td>");
+            $("<a href='###'></a>").attr("num", service.serviceId).html(service.serviceId).click(detailSaveId).appendTo(td1);
+            var td2 = $("<td></td>").html(service.accountId);
+            var td3 = $("<td>" + service.account.idcardNo + "</td>");
+            var td4 = $("<td>" + service.account.realName + "</td>");
+            var td5 = $("<td></td>").html(service.osUsername);
+            var td6 = $("<td></td>").html(service.status).attr("id", "status" + service.serviceId);
 
-<script src="/js/jquery-3.2.1.js"></script>
-<script>
-
-    <!--添加tr的方法-->
-    function addNewTrService(service) {
-        var td1 = $("<td></td>");
-        $("<a href='/'></a>").html(service.serviceId).appendTo(td1);
-        var td2 = $("<td></td>").html(service.accountId);
-        var td3 = $("<td></td>").html(service.account.idcardNo);
-        var td4 = $("<td></td>").html(service.account.loginName);
-        var td5 = $("<td></td>").html(service.osUsername);
-        var td6 = $("<td></td>").html(service.status);
-        var td7 = $("<td></td>").html(service.unixHost);
-        var td8 = $("<td></td>").html(service.cost.name);
-        var td9 = $("<td></td>");
-
-        $("<input type='button' value='启用' class='btn_start'  />").appendTo(td9);//.click(startAccount).attr("serviceId",service.serviceId)
-        $("<input type='button' value='修改' class='btn_modify' />").appendTo(td9);//.click(updataAccount).attr("serviceId",service.serviceId)
-        $("<input type='button' value='删除' class='btn_delete' />").appendTo(td9);//.click(delAccount).attr("serviceId",service.serviceId)
+            var td7 = $("<td></td>").html(service.unixHost);
 
 
-        var trob = $("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).append(td9)
-                .attr("id","trname"+service.serviceId);
+            var td8 = $("<td></td>");
+            $("<a class='summary' onmouseover='showDetail(true,this);' onmouseout='showDetail(false,this);'>" + service.cost.name + "</a>").appendTo(td8);
+            $("<div class='detail_info'>" + service.cost.descr + "</div>").appendTo(td8);
+            var td9 = $("<td></td>");
 
-        $("#datalist").append(trob);
+            var pause = $("<input type='button'>").attr("id", "op" + service.serviceId).click(setState);
 
-    }
-
-
-
-    <!--查找数据库并显示-->
-    function getAllService() {
-        $.ajax({
-
-            url:"/findService",
-            type:"post",
-            success:function (result) {
-                $.each(result.data,function (i, domEle) {
-                    addNewTrService(domEle);
-                })
+            if (service.status == "暂停") {
+                pause.val("开通").attr("class", "btn_start")
+            } else {
+                pause.val("暂停").attr("class", "btn_pause")
             }
 
-        })
-    }
+            var modify = $("<input type='button' value='修改' class='btn_modify'>").click(modiSaveId).attr("num", service.serviceId);
+            var del = $("<input type='button' value='删除'  class='btn_delete'>").click(deleteAccount).attr("num", service.serviceId);
+            if (service.status != "删除") {
+                td9.append(pause).append(modify).append(del)
+            }
 
-    getAllService();
+            var trob = $("<tr></tr>").attr("class","emp").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6)
+                .append(td7).append(td8).append(td9).attr("id", "trname" + service.serviceId);
 
+            $("#datalist").append(trob);
 
-    //    排序按钮的点击事件
-    function sort(btnObj) {
-        if (btnObj.className == "sort_desc")
-            btnObj.className = "sort_asc";
-        else
-            btnObj.className = "sort_desc";
-    }
+        }
 
+        //显示全部
+        function getAll() {
+            $.ajax({
+                type: "POST",
+                url: "/getallservices",
+                data: {
+                    no: null,
+                    size: null
+                },
+                success: function (result) {
+                    $.each(result.list, function (i, domEle) {
+                        addNewTr(domEle)
+                    });
+                    pageInfo(result);
+                }
+            })
+        }
+        getAll();
 
-</script>
+        //添加页码
+        function pageInfo(pageInfo) {
+
+            $("#pages").empty();
+            var size = 5;
+            $("<a href='#'>首页</a>").attr("no",1).attr("size",size).click(fuzzypage).appendTo($("#pages"));
+            if (pageInfo.isFirstPage){
+                $("<a href='#'>上一页</a>").attr("id","prePage").attr("no",1).attr("size",size).click(fuzzypage).appendTo($("#pages"));
+            }else
+            {
+                $("<a href='#'>上一页</a>").attr("id","prePage").attr("no",pageInfo.prePage).attr("size",size).click(fuzzypage).appendTo($("#pages"));
+            }
+            for (var i = 0 ;i < pageInfo.navigatepageNums.length;i++){
+                $("<a></a>").html(pageInfo.navigatepageNums[i]).attr("no",pageInfo.navigatepageNums[i]).attr("size",size).click(fuzzypage).appendTo($("#pages"));
+            }
+            if (pageInfo.isLastPage){
+                $("<a href='#'>下一页</a>").attr("id","nextPage").attr("no",pageInfo.lastPage).attr("size",size).click(fuzzypage).appendTo($("#pages"))
+            }else{
+                $("<a href='#'>下一页</a>").attr("id","nextPage").attr("no",pageInfo.nextPage).attr("size",size).click(fuzzypage).appendTo($("#pages"))
+            }
+            $("<a href='#'>尾页</a>").attr("no",pageInfo.lastPage).attr("size",size).click(page).appendTo($("#pages"));
+        }
+
+        //显示点击操作后的账号信息
+        function page() {
+            var pageNo = $(this).attr("no");
+            var pageSize = $(this).attr("size");
+            $.ajax({
+                type: "POST",
+                url: "/getallservices",
+                data: {
+                    no: pageNo,
+                    size: pageSize
+                },
+                success: function (result) {
+                    console.log(result);
+                    $(".emp").remove();
+                    $.each(result.list,function (i, domEle) {
+                        addNewTr(domEle)
+                    });
+                    pageInfo(result);
+                }
+            })
+
+        }
+
+        //开通或暂停
+        function setState() {
+            var sid = $(this).attr("id").slice(2);
+            if ($(this).val() == "暂停") {
+                window.confirm("确定要暂停此业务账号吗？");
+                $.ajax({
+                    url: "/pauseservice",
+                    data: {
+                        serviceId: sid
+                    },
+                    success: function (result) {
+                        console.log(result);
+                        $("#status" + sid).html("暂停");
+                        $("#op" + sid).val("开通").attr("class", "btn_start");
+                        $("#operate_result_info").html("该账户已暂停")
+                    }
+                })
+
+            } else {
+                window.confirm("确定要开通此业务账号吗？");
+                $.ajax({
+                    url: "/openservice",
+                    data: {
+                        serviceId: sid
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        $("#status" + sid).html("开通");
+                        $("#op" + sid).val("暂停").attr("class", "btn_pause");
+                        $("#operate_result_info").html("该账户已重新开通");
+                    }
+                })
+            }
+            document.getElementById("operate_result_info").style.display = "block";
+            window.setTimeout(function () {
+                document.getElementById("operate_result_info").style.display = "none"
+            }, 1000)
+        }
+
+        //删除
+        function deleteAccount() {
+            var r =  window.confirm("确定要删除此业务账号吗？");
+
+            var sid = $(this).attr("num");
+
+            if (true == r) {
+
+                $.ajax({
+                    url: "/delservice",
+                    data: {
+                        serviceId: sid
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        $("#status" + res.data.serviceId).html("删除");
+                        $("#operate_result_info").html("删除成功");
+                        $("#opreation" + res.data.accountId).empty()
+                    }
+                });
+
+                document.getElementById("operate_result_info").style.display = "block";
+                window.setTimeout(function () {
+                    document.getElementById("operate_result_info").style.display = "none";
+                }, 1500)
+            }
+        }
+
+        // 显示详情功能 将id存入session并实现跳转
+        function detailSaveId() {
+            var serviceId = $(this).attr("num");
+            $.ajax({
+                type: "POST",
+                url: "/saveserviceid",
+                data: {
+                    serviceId: serviceId
+                },
+                success: function (result) {
+                    if (result.data == 1) {
+                        window.location.href = '/service/service_detail';
+                    }
+                }
+            })
+        }
+
+        //显示角色详细信息
+        function showDetail(flag, a) {
+            var detailDiv = a.parentNode.getElementsByTagName("div")[0];
+            if (flag) {
+                detailDiv.style.display = "block";
+            }
+            else
+                detailDiv.style.display = "none";
+        }
+
+        //模糊查询
+        function fuzzyquery() {
+            var sta = null;
+            if ($("#stas").val() == "暂停") {
+                sta = "暂停"
+            }
+            if ($("#stas").val() == "开通") {
+                sta = "开通"
+            }
+            if ($("#stas").val() == "删除") {
+                sta = "删除"
+            }if ($("#stas").val() == "全部"){
+                sta = null
+            }
+            $.ajax({
+                url: "/queryservice",
+                type:"post",
+                data: {
+                    no: null,
+                    size: null,
+                    osUsername:$("#osname").val(),
+                    unixHost:$("#ip").val(),
+                    idcardNo:$("#idcard").val(),
+                    status: sta
+                },
+                success: function (res) {
+                    console.log(res);
+                    $(".emp").remove();
+                    $.each(res.list, function (i, domEle) {
+                        addNewTr(domEle)
+                    });
+                    pageInfo(res, 1)
+                }
+            })
+        }
+
+        function fuzzypage() {
+            var pageNo = $(this).attr("no");
+            var pageSize = $(this).attr("size");
+            var sta = null;
+            if ($("#stas").val() == "暂停") {
+                sta = "暂停"
+            }
+            if ($("#stas").val() == "开通") {
+                sta = "开通"
+            }
+            if ($("#stas").val() == "删除") {
+                sta = "删除"
+            }
+            if ($("#stas").val() == "全部") {
+                sta = null
+            }
+            $.ajax({
+                url: "/queryservice",
+                type:"post",
+                data: {
+                    no: pageNo,
+                    size: pageSize,
+                    osUsername:$("#osname").val(),
+                    unixHost:$("#ip").val(),
+                    idcardNo:$("#idcard").val(),
+                    status: sta
+                },
+                success: function (res) {
+                    console.log(res);
+                    $(".emp").remove();
+                    $.each(res.list, function (i, domEle) {
+                        addNewTr(domEle)
+                    });
+                    pageInfo(res, 1)
+                }
+            })
+        }
+
+        // 修改功能 将id存入session并实现跳转
+        function modiSaveId() {
+            var serviceId = $(this).attr("num");
+            var status = $(this).attr("status");
+            $.ajax({
+                type: "POST",
+                url: "/saveserviceid",
+                data: {
+                    serviceId: serviceId
+                },
+                success: function (result) {
+                    if (result.data == 1) {
+                        window.location.href = '/service/service_modi';
+                    }
+                }
+            })
+        }
+    </script>
 </html>

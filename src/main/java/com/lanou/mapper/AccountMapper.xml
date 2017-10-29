@@ -34,19 +34,41 @@
     from account
     where account_id = #{accountId,jdbcType=INTEGER}
   </select>
-  <select id="findAccount" resultMap="BaseResultMap">
+
+  <select id="findAllAccount" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
-     FROM account
+    <include refid="Base_Column_List"/>
+    FROM account
   </select>
-    <select id="findAccountIdCard" resultType="com.lanou.bean.Account">
 
-      SELECT
-      <include refid="Base_Column_List" />
-      FROM account
+  <!--条件查询-->
+  <select id="findByCondition" resultMap="BaseResultMap" parameterType="com.lanou.bean.Account">
+    SELECT <include refid="Base_Column_List"/>
+    FROM account
+    <where>
+      <if test="idcardNo != null">
+        AND idcard_no=#{idcardNo,jdbcType=CHAR}
+      </if>
+      <if test="realName != null">
+        AND real_name LIKE CONCAT('%',#{realName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="loginName != null">
+        AND login_name LIKE CONCAT('%',#{loginName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="status != null">
+        AND status=#{status,jdbcType=CHAR}
+      </if>
+    </where>
 
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  </select>
+
+  <!--通过身份证号查询-->
+  <select id="findAccountByIdCardNo" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM account WHERE idcard_no=#{idcardNo,jdbcType=CHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from account
     where account_id = #{accountId,jdbcType=INTEGER}
   </delete>

@@ -23,22 +23,6 @@ public class Cost {
 
     private String costType;
 
-    @Override
-    public String toString() {
-        return "Cost{" +
-                "costId=" + costId +
-                ", name='" + name + '\'' +
-                ", baseDuration=" + baseDuration +
-                ", baseCost=" + baseCost +
-                ", unitCost=" + unitCost +
-                ", status='" + status + '\'' +
-                ", descr='" + descr + '\'' +
-                ", creatime=" + creatime +
-                ", startime=" + startime +
-                ", costType='" + costType + '\'' +
-                '}';
-    }
-
     public Integer getCostId() {
         return costId;
     }
@@ -117,5 +101,21 @@ public class Cost {
 
     public void setCostType(String costType) {
         this.costType = costType == null ? null : costType.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Cost{" +
+                "costId=" + costId +
+                ", name='" + name + '\'' +
+                ", baseDuration=" + baseDuration +
+                ", baseCost=" + baseCost +
+                ", unitCost=" + unitCost +
+                ", status='" + status + '\'' +
+                ", descr='" + descr + '\'' +
+                ", creatime=" + creatime +
+                ", startime=" + startime +
+                ", costType='" + costType + '\'' +
+                '}';
     }
 }

@@ -2,28 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title></title>
+        <title>添加业务账号</title>
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global.css" />
         <link type="text/css" rel="stylesheet" media="all" href="../styles/global_color.css" />
-        <script language="javascript" type="text/javascript">
-            //保存成功的提示信息
-//            function showResult() {
-//                showResultDiv(true);
-//                window.setTimeout("showResultDiv(false);", 3000);
-//            }
-//            function showResultDiv(flag) {
-//                var divResult = document.getElementById("save_result_info");
-//                if (flag)
-//                    divResult.style.display = "block";
-//                else
-//                    divResult.style.display = "none";
-//            }
-
-            //自动查询账务账号
-//            function searchAccounts(txtObj) {
-//                //document.getElementById("a1").innerHTML = txtObj.value;
-//            }
-        </script>
     </head>
     <body>
         <!--Logo区域开始-->
@@ -35,12 +16,17 @@
         <!--导航区域开始-->
         <div id="navi">
             <ul id="menu">
-                <li><a href="../index.html" class="index_off"></a></li>
-                <li><a href="../role/role_list.html" class="role_off"></a></li>
+                <!--<li><a href="../index.html" class="index_off"></a></li>-->
+                <li><a href="/index" class="index_off"></a></li>
+                <!--<li><a href="../role/role_list.html" class="role_off"></a></li>-->
+                <li><a href="/role/role_list" class="role_off"></a></li>
                 <li><a href="../admin/admin_list.html" class="admin_off"></a></li>
+                <!--<li><a href="../fee/fee_list.html" class="fee_off"></a></li>-->
                 <li><a href="../fee/fee_list.html" class="fee_off"></a></li>
-                <li><a href="../account/account_list.html" class="account_off"></a></li>
-                <li><a href="service_list.html" class="service_on"></a></li>
+                <!--<li><a href="../account/account_list.html" class="account_off"></a></li>-->
+                <li><a href="/account/account_list" class="account_off"></a></li>
+                <!--<li><a href="../service/service_list.html" class="service_on"></a></li>-->
+                <li><a href="/service/service_list" class="service_on"></a></li>
                 <li><a href="../bill/bill_list.html" class="bill_off"></a></li>
                 <li><a href="../report/report_list.html" class="report_off"></a></li>
                 <li><a href="../user/user_info.html" class="information_off"></a></li>
@@ -51,26 +37,30 @@
         <!--主要区域开始-->
         <div id="main">
             <!--保存操作的提示信息-->
-            <!--<div id="save_result_info" class="save_fail">保存失败！192.168.0.23服务器上已经开通过 OS 账号 “mary”。</div>-->
-            <!--<form action="" method="" class="main_form">-->
+            <div id="save_result_info" class="save_fail">保存失败！192.168.0.23服务器上已经开通过 OS 账号 “mary”。</div>
+            <form action="" method="" class="main_form">
                 <!--内容项-->
                 <div class="text_info clearfix"><span>身份证：</span></div>
                 <div class="input_info">
-                    <input type="text" value=" " class="width180" id="idcardNo"/>
-                    <input type="button" value="查询" class="btn_search_large" onclick="showCostNameOptions()"/>
+                    <!--<input type="text" value="查询出的结果写入账务账号" class="width180" />-->
+                    <input type="text" id="idcardNo" class="width180" />
+                    <input type="button" value="查询账务账号" onclick="search()" class="btn_search_large" />
+                    <!--<input type="button"  class="btn_search_large" />-->
                     <span class="required">*</span>
-                    <div class="validate_msg_short" id="searchAccountByIdcardNoResult">没有此身份证号，请重新录入。</div>
+                    <div id="searchresult" class="validate_msg_short"></div>
                 </div>
                 <div class="text_info clearfix"><span>账务账号：</span></div>
                 <div class="input_info">
-                    <input type="text" value=" " onkeyup="searchAccounts(this);" id="loginName"/>
+                    <!--<input type="text" value="zhangsan1" onkeyup="searchAccounts(this);" />-->
+                    <!--<input type="text" readonly onkeyup="searchAccounts(this);" />-->
+                    <input type="text" id="loginName" onkeyup="searchAccounts(this);" />
                     <span class="required">*</span>
-                    <div class="validate_msg_long" id="searchAccountByLoginNameResult"></div>
+                    <div id="loginNmaeError" class="validate_msg_long"></div>
                 </div>
                 <div class="text_info clearfix"><span>资费类型：</span></div>
                 <div class="input_info">
-                    <select>
-                        <option>-资费列表-</option>
+                    <select id="costName">
+                        <!--<option>包 20 小时</option>-->
                         <!--<option>包 40 小时</option>-->
                         <!--<option>包 60 小时</option>-->
                         <!--<option>包月</option>-->
@@ -78,34 +68,36 @@
                 </div> 
                 <div class="text_info clearfix"><span>服务器 IP：</span></div>
                 <div class="input_info">
-                    <input type="text" value=" "  id="unixHost"/>
+                    <!--<input type="text" value="192.168.0.23"  />-->
+                    <input type="text" id="unixHost"/>
                     <span class="required">*</span>
                     <div class="validate_msg_long">15 长度，符合IP的地址规范</div>
                 </div>                   
                 <div class="text_info clearfix"><span>登录 OS 账号：</span></div>
                 <div class="input_info">
-                    <input type="text" value=" "  id="osUsername"/>
+                    <!--<input type="text" value="创建即启用，状态为开通"  />-->
+                    <input type="text" id="osUsername" />
                     <span class="required">*</span>
                     <div class="validate_msg_long">8长度以内的字母、数字和下划线的组合</div>
                 </div>
                 <div class="text_info clearfix"><span>密码：</span></div>
                 <div class="input_info">
-                    <input type="password"  id="loginPasswd"/>
+                    <input type="password" id="loginPasswd" />
                     <span class="required">*</span>
                     <div class="validate_msg_long">30长度以内的字母、数字和下划线的组合</div>
                 </div>
                 <div class="text_info clearfix"><span>重复密码：</span></div>
                 <div class="input_info">
-                    <input type="password"  id="loginPasswd2" onkeyup="repeatpwd()"/>
+                    <input type="password"  />
                     <span class="required">*</span>
-                    <div class="validate_msg_long" id="passwordMustSame"></div>
+                    <div class="validate_msg_long">两次密码必须相同</div>
                 </div>     
                 <!--操作按钮-->
                 <div class="button_info clearfix">
-                    <input type="button" value="保存" class="btn_save" id="btn"/>
-                    <input type="button" value="取消" class="btn_save" onclick="location.href='/serviceList';"/>
+                    <input type="button" value="保存" class="btn_save" onclick="addService();" />
+                    <input type="button" value="取消" class="btn_save" onclick="location.href='/service/service_list';"/>
                 </div>
-            <!--</form>-->
+            </form>
         </div>
         <!--主要区域结束-->
         <div id="footer">
@@ -114,124 +106,86 @@
             <span>版权所有(C)云科技有限公司 </span>
         </div>
     </body>
-<script src="/js/jquery-3.2.1.js"></script>
-<script>
-
-    <!--添加-->
-   $("#btn").click(function () {
-       $.ajax({
-           url:"/addService",
-           type:"post",
-           data:{
-               accountId:$("#searchAccountByLoginNameResult").attr("accountId"),
-               unixHost:$("#unix_host").val(),
-               osUsername:$("#os_username").val(),
-               loginPasswd:$("#login_passwd").val(),
-               costId:costId
-           },
-           success:function (result) {
-               console.log(result.message);
-               window.location.href="/serviceAdd"
-           }
-       })
-   });
-
-    // 通过身份证号查询Account账务账号是否存在
-    function searchAccountByIdcardNo() {
-        var idcardNo = $("#idcardNo").val();
-        $.ajax({
-            url:"/searchAccountByIdcardNo",
-            type:"post",
-            data:{
-                idcardNo:idcardNo
-            },
-            success:function (result) {
-                var errorCode = result.errorCode;
-                console.log(errorCode+'idCardNo');
-                if (errorCode==0){
-                    $("#searchAccountByIdcardNoResult").html("没有此身份证号，请重新录入~")
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script language="javascript" type="text/javascript">
+        //获得所有资费类型
+        function getAllCostTypes() {
+            $.ajax({
+                url: "/getAllCostType",
+                success: function (res) {
+                    console.log(res);
+                    $.each(res.data, function (i, domEle) {
+                        var op = $("<option>" + domEle.name + "</option>");
+                        $("#costName").append(op).attr("value",domEle.costId)
+                    })
                 }
-                if (errorCode==1){
-                    $("#searchAccountByIdcardNoResult").html("身份证号码存在~ ~")
-                    var loginName = result.data.loginName;
-                    $("#loginName").val(loginName);
-                    searchAccounts()
+            })
+        }
+
+        getAllCostTypes();
+
+        // 通过身份证查询财务账号
+        function searchAccounts() {
+
+        }
+
+        //通过身份证查询账务账号
+        function search() {
+            var idcardNo = $("#idcardNo").val();
+            $.ajax({
+                url: "/getaccountbyidcardNo",
+                data: {
+                    idcardNo: idcardNo
+                },
+                success: function (res) {
+                    var info = res.data;
+                    if (info == 0) {
+                        $("#searchresult").html("没有此身份证号，请重新录入。");
+                        $("#loginNmaeError").html("没有此账务账号，请重新录入。");
+                    } else {
+                        $("#idcardNo").attr("num",info.accountId);
+                        $("#loginName").val(info.loginName)
+                    }
                 }
-            }
-        })
-    }
+            })
+        }
 
+        // 保存增加数据
+        function addService() {
+            $.ajax({
+                type: "POST",
+                url:"/addservice",
+                data: {
+                    unixHost: $("#unixHost").val(),
+                    osUsername: $("#osUsername").val(),
+                    loginPasswd: $("#loginPasswd").val(),
+                    accountId: $("#idcardNo").attr("num"),
+                    costId:$("#costName").attr("value")
+                },
+                success: function (request) {
+                    if (request.data == 1) {
+                        window.location.href = '/service/service_list';
+                    }
+                }
+            })
+        }
 
-   //查询账务账号
-   function searchAccounts() {
-       var loginName = $("#loginName").val();
-       $.ajax({
-           url:"/searchLoginName",
-           data:{
-               loginName:loginName
-           },
-           success:function (result) {
-               var errorCode = result.errorCode;
-               var accountId = result.data.accountId;
-               console.log(errorCode+'LoginName');
-               if (errorCode==0){
-                   $("#searchAccountByLoginNameResult").html("没有此账务账号，请重新录入~")
-               }
-               if (errorCode==1){
-                   $("#searchAccountByLoginNameResult").html("账务账号存在~ ~").attr("accountId",accountId)
-               }
-           }
-       })
+        //保存成功的提示信息
+        function showResult() {
+            showResultDiv(true);
+            window.setTimeout("showResultDiv(false);", 3000);
+        }
+        function showResultDiv(flag) {
+            var divResult = document.getElementById("save_result_info");
+            if (flag)
+                divResult.style.display = "block";
+            else
+                divResult.style.display = "none";
+        }
 
-   }
-
-
-//   判断密码重复
-   function repeatpwd() {
-       var pwd1 = $("#loginPasswd").val();
-       var pwd2 = $("#loginPasswd2").val();
-       console.log(pwd1);
-       console.log(pwd2);
-       if (pwd1 == pwd2){
-           $("#passwordMustSame").html("两次输入密码一致")
-       }
-       if (pwd1 != pwd2){
-           $("#passwordMustSame").html(("两次输入的密码不一致,请重新输入"))
-       }
-   }
-
-
-//   显示资费名称的下拉列表
-   function showCostNameOptions() {
-       $.ajax({
-           url:"/showCostNameOptions",
-           type:"post",
-           success:function (result) {
-               var costList = result.data;
-               for (var i=0;i<costList.length;i++){
-                   var option = $("<option></option>").html(costList[i].name).attr("costId",costList[i].costId);
-                   $("#costName").append(option)
-               }
-           }
-       })
-   }
-
-   showCostNameOptions();
-
-//    $("#query").click(function () {
-//        $.ajax({
-//
-//            url:"/queryServicesIdCard",
-//            data:{
-//                idcardNo:idcardNo
-//            },
-//            success:function (result) {
-//                console.log(result.message);
-//            }
-//        })
-//    })
-
-
-
-</script>
+//        //自动查询账务账号
+//        function searchAccounts(txtObj) {
+//            //document.getElementById("a1").innerHTML = txtObj.value;
+//        }
+    </script>
 </html>

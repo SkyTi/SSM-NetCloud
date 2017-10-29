@@ -23,6 +23,26 @@ public class Service {
 
     private Integer costId;
 
+    private Account account;
+
+    private Cost cost;
+
+    public Cost getCost() {
+        return cost;
+    }
+
+    public void setCost(Cost cost) {
+        this.cost = cost;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     public Integer getServiceId() {
         return serviceId;
     }
@@ -101,5 +121,24 @@ public class Service {
 
     public void setCostId(Integer costId) {
         this.costId = costId;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "serviceId=" + serviceId +
+                ", accountId=" + accountId +
+                ", unixHost='" + unixHost + '\'' +
+                ", osUsername='" + osUsername + '\'' +
+                ", loginPasswd='" + loginPasswd + '\'' +
+                ", status='" + status + '\'' +
+                ", createDate=" + createDate +
+                ", pauseDate=" + pauseDate +
+                ", closeDate=" + closeDate +
+                ", costId=" + costId +
+                ", account=" + account +
+                ", cost=" + cost +
+                '}';
     }
 }

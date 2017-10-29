@@ -1,36 +1,48 @@
 package com.lanou.service;
 
+
 import com.github.pagehelper.PageInfo;
 import com.lanou.bean.Cost;
 
 import java.util.List;
 
-/**
- * Created by dllo on 17/10/20.
- */
+
 public interface CostService {
 
-    int addfee(Cost cost);
+    // 查找所有资费
 
-    int delfee(Integer costId);
+    List<Cost> findAllCost();
 
-    int updatafee(Cost cost);
+    // 增加资费信息
 
-    int updateCost(Cost cost);
+    boolean addCost(Cost cost);
 
-//    Cost finById(Integer id);
+    // 修改资费信息
 
-    Cost findCostById(Integer costId);
+    boolean updateCost(Cost cost);
+
+    // 通过id删除
+
+    boolean deleteCost(int costId);
+
+   // 通过id查询
+
+    Cost selectById(int costId);
+
+    // 分页显示资费信息
+
+    PageInfo<Cost> pageinfo(Integer pageNo, Integer pageSize);
 
 
+     // 修改状态
 
-    PageInfo<Cost> costPageinfo(Integer pageNo, Integer pageSize);
+    boolean updateStatus(Cost cost);
 
-    PageInfo<Cost>pageinfo(Integer pagesize);
+    List<Cost> sortCost(Integer type, Integer order);
 
-    PageInfo<Cost> queryStudentByPage(Integer pageNo, Integer pageSize);
+    PageInfo<Cost> sortCostWithPage(Integer type, Integer order,Integer pageNo, Integer pageSize);
 
-//    practice
-//    PageInfo<Cost>pageinfo1(Integer pagesize);
+    //查找所有资费类型
+    List<Cost> findAllCostTypes();
 
 }

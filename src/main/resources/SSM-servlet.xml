@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
     <mvc:annotation-driven/>
 
     <context:component-scan base-package="com.lanou"/>
@@ -11,19 +12,21 @@
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
-        <!--jsp文件路径的前缀-->
+        <!--prefix: jsp文件路径前缀-->
         <property name="prefix" value="/WEB-INF/"/>
-        <!--jsp文件路径的后缀-->
+
+        <!--suffix: jsp文件路径后缀-->
         <property name="suffix" value=".html"/>
+
+        <!--
+
+        /WEB-INF/***.jsp
+
+        -->
 
     </bean>
 
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/**"/>-->
-            <!--&lt;!&ndash;<mvc:exclude-mapping path="/login"/>&ndash;&gt;-->
-            <!--<bean class="com.lanou.interceptor.Interceptor"/>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+
+
 
 </beans>

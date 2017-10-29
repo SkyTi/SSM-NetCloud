@@ -5,7 +5,7 @@
 <generatorConfiguration>
 
     <!-- !!!! Driver Class Path !!!! -->
-    <classPathEntry location="/Users/dllo/Maven1/LocalWare/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar"/>
+    <classPathEntry location="/Users/dllo/maven/LocalWare/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar"/>
 
     <context id="context" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -14,13 +14,14 @@
         </commentGenerator>
 
         <!-- !!!! Database Configurations !!!! -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/netcloud" userId="root" password="111111"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/NetCloud" userId="root" password="111111"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
         <!-- !!!! Model Configurations !!!! -->
+                                                                        <!--写绝对路径可以给其他工程内生成文件(夹)-->
         <javaModelGenerator targetPackage="com.lanou.bean" targetProject="./src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
@@ -37,19 +38,14 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="cost" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="account" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="service" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="SERVICE_UPDATE_BAK" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"/>
-        <table tableName="module_info" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false"/>
+
         <table tableName="role_info" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
-        <table tableName="admin_info" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+
+        <table tableName="module_info" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false"/>
+
+
+
     </context>
 </generatorConfiguration>
