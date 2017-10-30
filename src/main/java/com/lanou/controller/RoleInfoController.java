@@ -68,6 +68,7 @@ public class RoleInfoController {
     public AjaxResult insertRole(@RequestParam(value = "name",required = false) String name,
                                  @RequestParam(value = "modules",required = false) String mle) {
 
+        
         if (mle.equals("") || mle == null) {
             return new AjaxResult(0);
         }
