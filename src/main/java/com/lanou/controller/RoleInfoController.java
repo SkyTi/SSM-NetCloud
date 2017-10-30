@@ -64,9 +64,10 @@ public class RoleInfoController {
 
     //  添加角色
     @ResponseBody
-    @RequestMapping(value = "/addRole",method = RequestMethod.POST)
-    public AjaxResult insertRole(@RequestParam("name") String name,
-                                 @RequestParam("modules") String mle) {
+    @RequestMapping(value = "/addRole")
+    public AjaxResult insertRole(@RequestParam(value = "name",required = false) String name,
+                                 @RequestParam(value = "modules",required = false) String mle) {
+
         if (mle.equals("") || mle == null) {
             return new AjaxResult(0);
         }
