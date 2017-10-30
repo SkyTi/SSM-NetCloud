@@ -205,22 +205,21 @@
             var td1 = $("<td></td>");
             $("<a href='###'></a>").attr("num", service.serviceId).html(service.serviceId).click(detailSaveId).appendTo(td1);
             var td2 = $("<td></td>").html(service.accountId);
-//            var td3 = $("<td>" + service.account.idcardNo + "</td>");
-//            var td4 = $("<td>" + service.account.realName + "</td>");
+            var td3 = $("<td></td>").html(service.account.idcardNo);
+            var td4 = $("<td></td>").html(service.account.realName );
             var td5 = $("<td></td>").html(service.osUsername);
             var td6 = $("<td></td>").html(service.status).attr("id", "status" + service.serviceId);
-
             var td7 = $("<td></td>").html(service.unixHost);
 
 
             var td8 = $("<td></td>");
-//            $("<a class='summary' onmouseover='showDetail(true,this);' onmouseout='showDetail(false,this);'>" + service.cost.name + "</a>").appendTo(td8);
-//            $("<div class='detail_info'>" + service.cost.descr + "</div>").appendTo(td8);
+            $("<a class='summary' onmouseover='showDetail(true,this);' onmouseout='showDetail(false,this);'>" + service.cost.name + "</a>").appendTo(td8);
+            $("<div class='detail_info'>" + service.cost.descr + "</div>").appendTo(td8);
             var td9 = $("<td></td>");
 
             var pause = $("<input type='button'>").attr("id", "op" + service.serviceId).click(setState);
 
-            if (service.status == "暂停") {
+            if (service.status == "0") {
                 pause.val("开通").attr("class", "btn_start")
             } else {
                 pause.val("暂停").attr("class", "btn_pause")
@@ -228,11 +227,11 @@
 
             var modify = $("<input type='button' value='修改' class='btn_modify'>").click(modiSaveId).attr("num", service.serviceId);
             var del = $("<input type='button' value='删除'  class='btn_delete'>").click(deleteAccount).attr("num", service.serviceId);
-            if (service.status != "删除") {
+            if (service.status != "2") {
                 td9.append(pause).append(modify).append(del)
             }
 
-            var trob = $("<tr></tr>").attr("class","emp").append(td1).append(td2).append(td5).append(td6)//.append(td3).append(td4)
+            var trob = $("<tr></tr>").attr("class","emp").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6)
                 .append(td7).append(td8).append(td9).attr("id", "trname" + service.serviceId);
 
             $("#datalist").append(trob);
@@ -401,13 +400,13 @@
         //模糊查询
         function fuzzyquery() {
             var sta = null;
-            if ($("#stas").val() == "暂停") {
+            if ($("#stas").val() == "0") {
                 sta = "暂停"
             }
-            if ($("#stas").val() == "开通") {
+            if ($("#stas").val() == "1") {
                 sta = "开通"
             }
-            if ($("#stas").val() == "删除") {
+            if ($("#stas").val() == "2") {
                 sta = "删除"
             }if ($("#stas").val() == "全部"){
                 sta = null
@@ -438,13 +437,13 @@
             var pageNo = $(this).attr("no");
             var pageSize = $(this).attr("size");
             var sta = null;
-            if ($("#stas").val() == "暂停") {
+            if ($("#stas").val() == "0") {
                 sta = "暂停"
             }
-            if ($("#stas").val() == "开通") {
+            if ($("#stas").val() == "1") {
                 sta = "开通"
             }
-            if ($("#stas").val() == "删除") {
+            if ($("#stas").val() == "2") {
                 sta = "删除"
             }
             if ($("#stas").val() == "全部") {

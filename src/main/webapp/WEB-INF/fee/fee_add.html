@@ -50,33 +50,34 @@
                 </div>
                 <div class="text_info clearfix"><span>基本时长：</span></div>
                 <div class="input_info">
-                    <input type="text" value="" id="baseDuration" class="width100" />
+                    <input type="text" value="" id="base_duration" class="width100" />
                     <span class="info">小时</span>
                     <span class="required">*</span>
                     <div class="validate_msg_long">1-600之间的整数</div>
                 </div>
                 <div class="text_info clearfix"><span>基本费用：</span></div>
                 <div class="input_info">
-                    <input type="text" value="" id="baseCost" class="width100" />
+                    <input type="text" value="" id="base_cost" class="width100" />
                     <span class="info">元</span>
                     <span class="required">*</span>
                     <div class="validate_msg_long error_msg">0-99999.99之间的数值</div>
                 </div>
                 <div class="text_info clearfix"><span>单位费用：</span></div>
                 <div class="input_info">
-                    <input type="text" value="" id="unitCost" class="width100" />
+                    <input type="text" value="" id="unit_cost" class="width100" />
                     <span class="info">元/小时</span>
                     <span class="required">*</span>
                     <div class="validate_msg_long error_msg">0-99999.99之间的数值</div>
                 </div>
                 <div class="text_info clearfix"><span>资费说明：</span></div>
                 <div class="input_info_high">
-                    <textarea id="descr" class="width300 height70"></textarea>
+                    <input id="descr" class="width300 height70" id="descr"/>
                     <div class="validate_msg_short error_msg">100长度的字母、数字、汉字和下划线的组合</div>
                 </div>                    
                 <div class="button_info clearfix">
                     <!--<input type="button" value="保存" class="btn_save"  onclick="showResult();" />-->
-                    <input type="button" value="保存" class="btn_save"  onclick="addCost();" />
+                    <input type="button" value="保存" class="btn_save"   id="btn"/>
+                    <!--onclick="addCost();"-->
                     <input type="button" value="取消" class="btn_save" onclick="location.href='/fee/fee_list';"/>
                 </div>
             <!--</form>  -->
@@ -88,27 +89,55 @@
            <span>版权所有(C)云科技有限公司 </span>
         </div>
     </body>
-    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="/js/jquery-3.2.1.js"></script>
     <script language="javascript" type="text/javascript">
         // 保存增加数据
-        function addCost() {
+//        function addCost() {
+//            $.ajax({
+//                type: "POST",
+//                url:"/addcost",
+//                data: {
+//                    name: $("#name").val(),
+//                    baseDuration: $("#baseDuration").val(),
+//                    baseCost: $("#baseCost").val(),
+//                    unitCost: $("#unitCost").val(),
+//                    descr: $("#descr").val()
+//                },
+//                success: function (result) {
+//                    if (result.data == 1) {
+//                        window.location.href = '/fee/fee_list';
+//                    }
+//                }
+//            })
+//        }
+
+
+        $("#btn").click(function () {
+
             $.ajax({
-                type: "POST",
                 url:"/addcost",
-                data: {
-                    name: $("#name").val(),
-                    baseDuration: $("#baseDuration").val(),
-                    baseCost: $("#baseCost").val(),
-                    unitCost: $("#unitCost").val(),
-                    descr: $("#descr").val()
+                type:"post",
+                data:{
+                    name:$("#name").val(),
+//                    monthly:$("#monthly").val(),
+//                    package:$("#package").val(),
+//                    timeBased:$("#timeBased").val(),
+                    baseDuration:$("#base_duration").val(),
+                    baseCost:$("#base_cost").val(),
+                    unitCost:$("#unit_cost").val(),
+                    descr:$("#descr").val()
                 },
-                success: function (request) {
-                    if (request.data == 1) {
-                        window.location.href = '/fee/fee_list';
-                    }
+                success:function (result) {
+
+                    console.log(result);
+                    window.location.href="/fee/fee_list"
+
                 }
+
             })
-        }
+
+        });
+
 
         //保存结果的提示
         function showResult() {

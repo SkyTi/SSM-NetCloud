@@ -35,7 +35,7 @@
 <!--导航区域结束-->
 <!--主要区域开始-->
 <div id="main">
-    <form action="" method="">
+    <!--<form action="" method="">-->
         <!--排序-->
         <div class="search_add">
             <div>
@@ -115,7 +115,7 @@
             <!--<a href="#">5</a>-->
             <!--<a href="#">下一页</a>-->
         </div>
-    </form>
+    <!--</form>-->
 </div>
 <!--主要区域结束-->
 <div id="footer">
@@ -124,7 +124,7 @@
 </div>
 </body>
 
-<script src="../js/jquery-3.2.1.js"></script>
+<script src="/js/jquery-3.2.1.js"></script>
 <script language="javascript">
     // 添加tr的方法
     function addNewTr(cost) {
@@ -322,8 +322,7 @@
     }
 
 
-    // 进行排序操作
-    // 参数-->  sortType:基费(0)or时长(1)   sortOrder:升序(0)or降序(1)
+    // 排序
     function sorting(sortType,sortOrder,pageNo) {
         $.ajax({
             url:"/sortCostWithPage",
@@ -347,32 +346,32 @@
                 }
                 // 分页导航栏:
                 // (1)上一页
-                if (costPageInfo.isFirstPage){
-                    var prePage = $("<a></a>").html("上一页")
-                }else {
-                    var preNo = costPageInfo.prePage;
-                    var prePage = $("<a></a>").html("上一页").attr("id","pageNo"+preNo).attr("sortType",sortType).attr("sortOrder",sortOrder).click(pre);
-                }
-                $("#pageX").append(prePage);
-                // (2)页码
-                for (var i=0;i<costPageInfo.pages;i++){
-                    // 设置页码:1,2,3...
-                    var pageNoX=$("<a></a>").html(i+1).attr("id","pageNo"+(i+1)).attr("sortType",sortType).attr("sortOrder",sortOrder).click(pageInfo);
-                    // 为当前页添加背景属性,以作区分
-                    if ((i+1)==costPageInfo.pageNum){
-                        pageNoX.attr("class","current_page")
-                    }
-                    // 将页码填入分页导航栏
-                    $("#pageX").append(pageNoX)
-                }
-                // (3)下一页
-                if (costPageInfo.isLastPage){
-                    var nextPage = $("<a></a>").html("下一页")
-                }else {
-                    var nextNo = costPageInfo.nextPage;
-                    var nextPage = $("<a></a>").html("下一页").attr("id","pageNo"+nextNo).attr("sortType",sortType).attr("sortOrder",sortOrder).click(next);
-                }
-                $("#pageX").append(nextPage);
+//                if (costPageInfo.isFirstPage){
+//                    var prePage = $("<a></a>").html("上一页")
+//                }else {
+//                    var preNo = costPageInfo.prePage;
+//                    var prePage = $("<a></a>").html("上一页").attr("id","pageNo"+preNo).attr("sortType",sortType).attr("sortOrder",sortOrder).click(pre);
+//                }
+//                $("#pageX").append(prePage);
+//                // (2)页码
+//                for (var i=0;i<costPageInfo.pages;i++){
+//                    // 设置页码:1,2,3...
+//                    var pageNoX=$("<a></a>").html(i+1).attr("id","pageNo"+(i+1)).attr("sortType",sortType).attr("sortOrder",sortOrder).click(pageInfo);
+//                    // 为当前页添加背景属性,以作区分
+//                    if ((i+1)==costPageInfo.pageNum){
+//                        pageNoX.attr("class","current_page")
+//                    }
+//                    // 将页码填入分页导航栏
+//                    $("#pageX").append(pageNoX)
+//                }
+//                // (3)下一页
+//                if (costPageInfo.isLastPage){
+//                    var nextPage = $("<a></a>").html("下一页")
+//                }else {
+//                    var nextNo = costPageInfo.nextPage;
+//                    var nextPage = $("<a></a>").html("下一页").attr("id","pageNo"+nextNo).attr("sortType",sortType).attr("sortOrder",sortOrder).click(next);
+//                }
+//                $("#pageX").append(nextPage);
             }
         })
     }

@@ -165,7 +165,7 @@
     <p>版权所有(C)云科技有限公司 </p>
 </div>
 </body>
-<script src="../js/jquery-3.2.1.js"></script>
+<script src="/js/jquery-3.2.1.js"></script>
 <script language="javascript" type="text/javascript">
     //添加tr的方法
     function addNewTr(account) {
@@ -176,13 +176,13 @@
         var td4 = $("<td></td>").html(account.loginName);
 
         var td5 = $("<td></td>").attr("id", "status" + account.accountId);
-        if (account.status == "暂停") {
+        if (account.status == "0") {
             td5.html("暂停")
         }
-        if (account.status == "开通") {
+        if (account.status == "1") {
             td5.html("开通")
         }
-        if (account.status == "删除") {
+        if (account.status == "2") {
             td5.html("删除")
         }
 
@@ -193,14 +193,14 @@
         var td8 = $("<td></td>").attr("id", "opreation" + account.accountId);
         var pause = $("<input type='button'>").attr("id", "op" + account.accountId).click(setState);
 
-        if (account.status == "暂停") {
+        if (account.status == "0") {
             pause.val("开通").attr("class", "btn_start")
         } else {
             pause.val("暂停").attr("class", "btn_pause")
         }
         var modify = $("<input type='button' value='修改' class='btn_modify'>").click(modiSaveId).attr("num", account.accountId);
         var del = $("<input type='button' value='删除'  class='btn_delete'>").click(deleteAccount).attr("num", account.accountId);
-        if (account.status != "删除") {
+        if (account.status != "2") {
             td8.append(pause).append(modify).append(del)
         }
         var trob = $("<tr></tr>").attr("id", "tr" + account.accountId).attr("class", "emp");

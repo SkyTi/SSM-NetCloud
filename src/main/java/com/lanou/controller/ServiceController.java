@@ -96,7 +96,7 @@ public class ServiceController {
 
         service.setPauseDate(null);
 
-        service.setStatus("开通");
+        service.setStatus("1");
 
         serviceService.updateService(service);
 
@@ -112,7 +112,7 @@ public class ServiceController {
         Service service = serviceService.selectById(sid);
 
         service.setPauseDate(new Date());
-        service.setStatus("暂停");
+        service.setStatus("0");
 
         serviceService.updateService(service);
         return new AjaxResult(service);
@@ -126,7 +126,7 @@ public class ServiceController {
         Service service = serviceService.selectById(sid);
 
         service.setCloseDate(new Date());
-        service.setStatus("删除");
+        service.setStatus("2");
 
         serviceService.updateService(service);
         return new AjaxResult(service);

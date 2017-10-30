@@ -1,11 +1,10 @@
 package com.lanou.utils;
 
 /**
- *
- * @author dllo
- * @date 2017/10/11
+ * Created by dllo on 17/10/10.
  */
 public class AjaxResult {
+
     private String message;
     private Integer errorCode;
     private Object data;
@@ -14,12 +13,12 @@ public class AjaxResult {
     }
 
     public AjaxResult(Object data) {
-        this.message = "成功!";
         this.errorCode = 0;
+        this.message = "成功!";
         this.data = data;
     }
 
-    public AjaxResult(Object data, Integer errorCode,String message ) {
+    public AjaxResult(String message, Integer errorCode, Object data) {
         this.message = message;
         this.errorCode = errorCode;
         this.data = data;

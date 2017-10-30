@@ -69,8 +69,9 @@ public class AccountController {
      // 添加信息
 
     @ResponseBody
-    @RequestMapping(value = "/addaccount", method = RequestMethod.POST)
+    @RequestMapping(value = "/addaccount")
     public AjaxResult addAccount(Account account) {
+        account.setCreateDate(new Date());
         accountService.addAccount(account);
         return new AjaxResult(1);
     }
@@ -174,7 +175,7 @@ public class AccountController {
         Account account = accountService.selectById(aid);
 
         account.setCloseDate(new Date());
-        account.setStatus("删除");
+        account.setStatus("2");
 
         accountService.updateAccount(account);
         return new AjaxResult(account);
@@ -191,7 +192,7 @@ public class AccountController {
 
         account.setPauseDate(null);
 
-        account.setStatus("开通");
+        account.setStatus("1");
 
         accountService.updateAccount(account);
 
@@ -207,7 +208,7 @@ public class AccountController {
         Account account = accountService.selectById(aid);
 
         account.setPauseDate(new Date());
-        account.setStatus("暂停");
+        account.setStatus("0");
 
         accountService.updateAccount(account);
         return new AjaxResult(account);

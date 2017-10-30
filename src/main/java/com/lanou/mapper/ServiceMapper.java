@@ -20,9 +20,9 @@ public interface ServiceMapper {
 
     // 查找所有业务账户信息
 
-//    List<Service> findAllService();
+    List<Service> findAllServices();
 
-    // 查询全部业务账号
+    // 查询全部业务账号(一对一级联关系)
 
     List<Service> findAllService();
 

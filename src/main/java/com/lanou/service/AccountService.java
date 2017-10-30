@@ -11,7 +11,7 @@ public interface AccountService {
 
     // 增加
 
-    boolean addAccount(Account account);
+    int addAccount(Account account);
 
     // 通过id查询
 

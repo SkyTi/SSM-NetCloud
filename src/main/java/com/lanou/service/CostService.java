@@ -15,7 +15,7 @@ public interface CostService {
 
     // 增加资费信息
 
-    boolean addCost(Cost cost);
+    int addCost(Cost cost);
 
     // 修改资费信息
 
@@ -35,8 +35,9 @@ public interface CostService {
 
 
      // 修改状态
-
     boolean updateStatus(Cost cost);
+
+
 
     List<Cost> sortCost(Integer type, Integer order);
 

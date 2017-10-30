@@ -64,8 +64,8 @@ public class ServiceServiceImpl implements ServiceService {
 
     @Override
     public boolean addService(Service service) {
-        service.setStatus("开通");
-        service.setCreateDate(new Timestamp(System.currentTimeMillis()));
+//        service.setStatus("开通");
+//        service.setCreateDate(new Timestamp(System.currentTimeMillis()));
         serviceMapper.insertSelective(service);
         return true;
     }

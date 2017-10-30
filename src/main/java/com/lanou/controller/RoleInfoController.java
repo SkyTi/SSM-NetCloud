@@ -15,11 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author dllo
- * @date 2017/10/27
- */
+
 @Controller
 public class RoleInfoController {
 
@@ -123,10 +119,10 @@ public class RoleInfoController {
 
     // 保存修改后的角色信息
     @ResponseBody
-    @RequestMapping(value = "/updateRole",method = RequestMethod.POST)
-    public AjaxResult updateRole(@RequestParam("roleId") Integer roleId,
-                                 @RequestParam("name") String name,
-                                 @RequestParam("modules") String mle) {
+    @RequestMapping(value = "/updateRole")
+    public AjaxResult updateRole(@RequestParam(value = "roleId",required = false) Integer roleId,
+                                 @RequestParam(value = "name",required = false) String name,
+                                 @RequestParam(value = "modules",required = false) String mle) {
 
         if (mle.equals("") || mle == null) {
             return new AjaxResult(0);

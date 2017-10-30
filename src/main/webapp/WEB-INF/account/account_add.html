@@ -33,35 +33,35 @@
         <div id="main">       
             <!--保存成功或者失败的提示消息-->     
             <div id="save_result_info" class="save_fail">保存失败，该身份证已经开通过账务账号！</div>
-            <form action="" method="" class="main_form">
+            <!--<form action="" method="" class="main_form">-->
                 <!--必填项-->
                 <div class="text_info clearfix"><span>姓名：</span></div>
                 <div class="input_info">
-                    <input type="text" id="realName" value="张三" />
+                    <input type="text" id="real_name" value="" />
                     <span class="required">*</span>
                     <div class="validate_msg_long">20长度以内的汉字、字母和数字的组合</div>
                 </div>
                 <div class="text_info clearfix"><span>身份证：</span></div>
                 <div class="input_info">
-                    <input type="text" id="idcardNo" value="230198765432123456" />
+                    <input type="text" id="idcard_no" value=" " />
                     <span class="required">*</span>
                     <div class="validate_msg_long">正确的身份证号码格式</div>
                 </div>
                 <div class="text_info clearfix"><span>登录账号：</span></div>
                 <div class="input_info">
-                    <input type="text" id="loginName" value=""  />
+                    <input type="text" id="login_name" value=""  />
                     <span class="required">*</span>
                     <div class="validate_msg_long">30长度以内的字母、数字和下划线的组合</div>
                 </div>
                 <div class="text_info clearfix"><span>密码：</span></div>
                 <div class="input_info">
-                    <input type="password" id="loginPasswd" />
+                    <input type="password" id="login_passwd" />
                     <span class="required">*</span>
                     <div class="validate_msg_long">30长度以内的字母、数字和下划线的组合</div>
                 </div>
                 <div class="text_info clearfix"><span>重复密码：</span></div>
                 <div class="input_info">
-                    <input type="password"  />
+                    <input type="password"  id="loginPasswd2"/>
                     <span class="required">*</span>
                     <div class="validate_msg_long">两次密码必须相同</div>
                 </div>     
@@ -125,10 +125,11 @@
                 </div>
                 <!--操作按钮-->
                 <div class="button_info clearfix">
-                    <input type="button" value="保存" class="btn_save" onclick="addCost();" />
+                    <input type="button" value="保存" class="btn_save" id="btn" />
+                    <!--onclick="addCost();"-->
                     <input type="button" value="取消" class="btn_save" onclick="location.href='/account/account_list';"/>
                 </div>
-            </form>  
+            <!--</form>  -->
         </div>
         <!--主要区域结束-->
         <div id="footer">
@@ -137,64 +138,101 @@
             <span>版权所有(C)云科技有限公司 </span>
         </div>
     </body>
-    <script src="../js/jquery-3.2.1.js"></script>
-    <script language="javascript" type="text/javascript">
+
+    <!--<script language="javascript" type="text/javascript">-->
+
+        <script src="/js/jquery-3.2.1.js"></script>
+
+    <script>
+
         // 保存增加数据
-        function addCost() {
-            var gender = null;
-            if ($("female").checked==true) {
-                gender = "女"
-            } else {
-                gender = "男"
-            }
+//        function addCost() {
+//            var gender = null;
+//            if ($("female").checked==true) {
+//                gender = "女"
+//            } else {
+//                gender = "男"
+//            }
+//            $.ajax({
+//                type: "POST",
+//                url:"/addaccount",
+//                data: {
+//                    realName: $("#realName").val(),
+//                    idcardNo: $("#idcardNo").val(),
+//                    loginPasswd: $("#loginPasswd").val(),
+//                    telephone: $("#telephone").val(),
+//                    loginName: $("#loginName").val(),
+//                    email: $("#email").val(),
+//                    zipcode: $("#zipcode").val(),
+//                    mailaddress: $("#mailaddress").val(),
+//                    qq: $("#qq").val(),
+//                    gender: gender,
+//                    occupation: $("#occupation").val()
+//                },
+//                success: function (request) {
+//                    if (request.data == 1) {
+//                        window.location.href = '/account/account_list';
+//                    }
+//                }
+//            })
+//        }
+
+
+
+        $("#btn").click(function () {
             $.ajax({
-                type: "POST",
                 url:"/addaccount",
-                data: {
-                    realName: $("#realName").val(),
-                    idcardNo: $("#idcardNo").val(),
-                    loginPasswd: $("#loginPasswd").val(),
-                    telephone: $("#telephone").val(),
-                    loginName: $("#loginName").val(),
-                    email: $("#email").val(),
-                    zipcode: $("#zipcode").val(),
-                    mailaddress: $("#mailaddress").val(),
-                    qq: $("#qq").val(),
-                    gender: gender,
-                    occupation: $("#occupation").val()
+                type:"post",
+                data:{
+                    realName:$("#real_name").val(),
+                    idcardNo:$("#idcard_no").val(),
+                    loginName:$("#login_name").val(),
+                    loginPasswd:$("#login_passwd").val(),
+                    telephone:$("#telephone").val(),
+                    accountId:$("#account_id").val(),
+                    recommenderId:$("#recommender_id").val(),
+                    birthdate:$("#birthdate").val(),
+                    email:$("#email").val(),
+                    mailaddress:$("#mailaddress").val(),
+//                zipcode:$("#zipcode")
+//                qq:$("#qq")
+//                lastLoginTime:$("#last_login_time"),
+//                lastLoginIp:$("#last_login_ip")
+
                 },
-                success: function (request) {
-                    if (request.data == 1) {
-                        window.location.href = '/account/account_list';
-                    }
+                success:function (result) {
+                    console.log(result);
+                    window.location.href="/account/account_list"
                 }
             })
-        }
+        });
 
-        //保存成功的提示信息
-        function showResult() {
-            showResultDiv(true);
-            window.setTimeout("showResultDiv(false);", 3000);
-        }
-        function showResultDiv(flag) {
-            var divResult = document.getElementById("save_result_info");
-            if (flag)
-                divResult.style.display = "block";
-            else
-                divResult.style.display = "none";
-        }
 
-        //显示选填的信息项
-        function showOptionalInfo(imgObj) {
-            var div = document.getElementById("optionalInfo");
-            if (div.className == "hide") {
-                div.className = "show";
-                imgObj.src = "../images/hide.png";
-            }
-            else {
-                div.className = "hide";
-                imgObj.src = "../images/show.png";
-            }
-        }
+
+//        //保存成功的提示信息
+//        function showResult() {
+//            showResultDiv(true);
+//            window.setTimeout("showResultDiv(false);", 3000);
+//        }
+//        function showResultDiv(flag) {
+//            var divResult = document.getElementById("save_result_info");
+//            if (flag)
+//                divResult.style.display = "block";
+//            else
+//                divResult.style.display = "none";
+//        }
+//
+//        //显示选填的信息项
+//        function showOptionalInfo(imgObj) {
+//            var div = document.getElementById("optionalInfo");
+//            if (div.className == "hide") {
+//                div.className = "show";
+//                imgObj.src = "../images/hide.png";
+//            }
+//            else {
+//                div.className = "hide";
+//                imgObj.src = "../images/show.png";
+//            }
+//        }
     </script>
 </html>

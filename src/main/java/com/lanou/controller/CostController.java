@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 
@@ -76,9 +77,11 @@ public class CostController {
      // 添加资费信息
 
     @ResponseBody
-    @RequestMapping(value = "/addcost", method = RequestMethod.POST)
+    @RequestMapping(value = "/addcost")
     public AjaxResult addCost(Cost cost) {
+        cost.setCreatime(new Date());
         costService.addCost(cost);
+        System.out.println(cost);
         return new AjaxResult(1);
     }
 
@@ -142,7 +145,7 @@ public class CostController {
     }
 
 
-     // 修改
+     // 修改状态
 
     @ResponseBody
     @RequestMapping(value = "/updatestatus")
@@ -150,6 +153,8 @@ public class CostController {
         costService.updateStatus(cost);
         return new AjaxResult(1);
     }
+
+
 
     @RequestMapping("/index")
     public String index() {

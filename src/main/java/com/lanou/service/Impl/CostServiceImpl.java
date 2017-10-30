@@ -25,12 +25,11 @@ public class CostServiceImpl implements CostService {
     }
 
     @Override
-    public boolean addCost(Cost cost) {
+    public int addCost(Cost cost) {
 
-        cost.setStatus("暂停");
-        cost.setCreatime(new Timestamp(System.currentTimeMillis()));
-        costMapper.insertSelective(cost);
-        return true;
+//        cost.setStatus("暂停");
+//        cost.setCreatime(new Timestamp(System.currentTimeMillis()));
+        return costMapper.insertSelective(cost);
     }
 
     // 修改
@@ -66,7 +65,7 @@ public class CostServiceImpl implements CostService {
     // 修改状态
     @Override
     public boolean updateStatus(Cost cost) {
-            cost.setStatus("开通");
+            cost.setStatus("1");
             cost.setStartime(new Timestamp(System.currentTimeMillis()));
             costMapper.updateByPrimaryKeySelective(cost);
 

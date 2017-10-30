@@ -43,16 +43,18 @@
     where service_id = #{serviceId,jdbcType=INTEGER}
   </select>
 
+
   <select id="findAllService" resultMap="ServiceResultMap">
     SELECT
     <include refid="Base_Column_List"/>
     FROM service
   </select>
 
-  <!--<select id="findAllServices" resultMap="BaseResultMap">-->
-    <!--SELECT <include refid="Base_Column_List"/>-->
-    <!--FROM service-->
-  <!--</select>-->
+  <select id="findAllServices" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM service
+  </select>
+
 
   <select id="findServiceByCondition" resultMap="ServiceResultMap">
 

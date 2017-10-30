@@ -29,11 +29,11 @@ public class AccountServiceImpl implements AccountService {
     // 增加
 
     @Override
-    public boolean addAccount(Account account) {
-        account.setStatus("开通");
-        account.setCreateDate(new Timestamp(System.currentTimeMillis()));
-        accountMapper.insertSelective(account);
-        return true;
+    public int addAccount(Account account) {
+//        account.setStatus("开通");
+//        account.setCreateDate(new Timestamp(System.currentTimeMillis()));
+
+        return accountMapper.insertSelective(account);
     }
 
     // 通过id查询详细
