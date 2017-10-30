@@ -12,36 +12,22 @@ import java.sql.Timestamp;
 import java.util.List;
 
 
-/**
- * @author dllo
- * @date 2017/10/24
- */
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
     @Resource
     private AccountMapper accountMapper;
 
-    /**
-     * 页面分页信息
-     *
-     * @param pageNo   第几页
-     * @param pageSize 每页的条数
-     * @return
-     */
+    // 页面分页信息
+
     @Override
     public PageInfo<Account> pageinfo(Integer pageNo, Integer pageSize) {
         return queryCostByPage(pageNo, pageSize);
     }
 
-    /**
-     * 增加
-     * <p>
-     * 状态:开通 创建后的状态,也是启动状态
-     *
-     * @param account
-     * @return
-     */
+    // 增加
+
     @Override
     public boolean addAccount(Account account) {
         account.setStatus("开通");

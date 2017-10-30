@@ -205,8 +205,8 @@
             var td1 = $("<td></td>");
             $("<a href='###'></a>").attr("num", service.serviceId).html(service.serviceId).click(detailSaveId).appendTo(td1);
             var td2 = $("<td></td>").html(service.accountId);
-            var td3 = $("<td>" + service.account.idcardNo + "</td>");
-            var td4 = $("<td>" + service.account.realName + "</td>");
+//            var td3 = $("<td>" + service.account.idcardNo + "</td>");
+//            var td4 = $("<td>" + service.account.realName + "</td>");
             var td5 = $("<td></td>").html(service.osUsername);
             var td6 = $("<td></td>").html(service.status).attr("id", "status" + service.serviceId);
 
@@ -214,8 +214,8 @@
 
 
             var td8 = $("<td></td>");
-            $("<a class='summary' onmouseover='showDetail(true,this);' onmouseout='showDetail(false,this);'>" + service.cost.name + "</a>").appendTo(td8);
-            $("<div class='detail_info'>" + service.cost.descr + "</div>").appendTo(td8);
+//            $("<a class='summary' onmouseover='showDetail(true,this);' onmouseout='showDetail(false,this);'>" + service.cost.name + "</a>").appendTo(td8);
+//            $("<div class='detail_info'>" + service.cost.descr + "</div>").appendTo(td8);
             var td9 = $("<td></td>");
 
             var pause = $("<input type='button'>").attr("id", "op" + service.serviceId).click(setState);
@@ -232,7 +232,7 @@
                 td9.append(pause).append(modify).append(del)
             }
 
-            var trob = $("<tr></tr>").attr("class","emp").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6)
+            var trob = $("<tr></tr>").attr("class","emp").append(td1).append(td2).append(td5).append(td6)//.append(td3).append(td4)
                 .append(td7).append(td8).append(td9).attr("id", "trname" + service.serviceId);
 
             $("#datalist").append(trob);

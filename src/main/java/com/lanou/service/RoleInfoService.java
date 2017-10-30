@@ -3,11 +3,7 @@ package com.lanou.service;
 import com.github.pagehelper.PageInfo;
 import com.lanou.bean.RoleInfo;
 
-/**
- *
- * @author dllo
- * @date 2017/10/27
- */
+
 public interface RoleInfoService {
 
    // 分页显示账户信息

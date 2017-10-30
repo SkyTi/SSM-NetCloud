@@ -12,13 +12,24 @@
     <result column="pause_date" jdbcType="TIMESTAMP" property="pauseDate" />
     <result column="close_date" jdbcType="TIMESTAMP" property="closeDate" />
     <result column="cost_id" jdbcType="INTEGER" property="costId" />
+
+  </resultMap>
+  <resultMap id="ServiceResultMap" type="com.lanou.bean.Service">
+    <id column="service_id" jdbcType="INTEGER" property="serviceId" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="unix_host" jdbcType="VARCHAR" property="unixHost" />
+    <result column="os_username" jdbcType="VARCHAR" property="osUsername" />
+    <result column="login_passwd" jdbcType="VARCHAR" property="loginPasswd" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="pause_date" jdbcType="TIMESTAMP" property="pauseDate" />
+    <result column="close_date" jdbcType="TIMESTAMP" property="closeDate" />
+    <result column="cost_id" jdbcType="INTEGER" property="costId" />
     <association property="account"
                  column="account_id"
-                 javaType="com.lanou.bean.Account"
                  select="com.lanou.mapper.AccountMapper.selectByPrimaryKey"/>
     <association property="cost"
                  column="cost_id"
-                 javaType="com.lanou.bean.Cost"
                  select="com.lanou.mapper.CostMapper.selectByPrimaryKey"/>
   </resultMap>
   <sql id="Base_Column_List">
@@ -32,18 +43,18 @@
     where service_id = #{serviceId,jdbcType=INTEGER}
   </select>
 
-  <select id="findAllService" resultMap="BaseResultMap">
+  <select id="findAllService" resultMap="ServiceResultMap">
     SELECT
     <include refid="Base_Column_List"/>
     FROM service
   </select>
 
-  <select id="findAllServices" resultMap="BaseResultMap">
-    SELECT <include refid="Base_Column_List"/>
-    FROM service
-  </select>
+  <!--<select id="findAllServices" resultMap="BaseResultMap">-->
+    <!--SELECT <include refid="Base_Column_List"/>-->
+    <!--FROM service-->
+  <!--</select>-->
 
-  <select id="findServiceByCondition" resultMap="BaseResultMap">
+  <select id="findServiceByCondition" resultMap="ServiceResultMap">
 
     SELECT <include refid="Base_Column_List"/>
     FROM service

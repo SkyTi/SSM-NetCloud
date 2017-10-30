@@ -20,11 +20,11 @@ public interface ServiceMapper {
 
     // 查找所有业务账户信息
 
-    List<Service> findAllService();
+//    List<Service> findAllService();
 
     // 查询全部业务账号
 
-    List<Service> findAllServices();
+    List<Service> findAllService();
 
     // 条件查询业务账号
 

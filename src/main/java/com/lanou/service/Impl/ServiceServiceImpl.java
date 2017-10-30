@@ -36,10 +36,12 @@ public class ServiceServiceImpl implements ServiceService {
         PageHelper.startPage(pageNo, pageSize);
 
         // 获取全部的信息
-        List<Service> serviceList = serviceMapper.findAllServices();
+        List<Service> serviceList = serviceMapper.findAllService();
+
+        System.out.println(serviceList);
 
         // 使用PageInfo对结果进行包装
-        return new PageInfo<>(serviceList);
+        return new PageInfo<Service>(serviceList);
     }
 
     // 通过id查询详细
@@ -79,7 +81,7 @@ public class ServiceServiceImpl implements ServiceService {
 
         List<Service> serviceList = serviceMapper.findServiceByCondition(status,osUsername,unixHost,idcardNo);
 
-        return new PageInfo<>(serviceList);
+        return new PageInfo<Service>(serviceList);
     }
 
 }

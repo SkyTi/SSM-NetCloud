@@ -27,6 +27,24 @@ public class Service {
 
     private Cost cost;
 
+    @Override
+    public String toString() {
+        return "Service{" +
+                "serviceId=" + serviceId +
+                ", accountId=" + accountId +
+                ", unixHost='" + unixHost + '\'' +
+                ", osUsername='" + osUsername + '\'' +
+                ", loginPasswd='" + loginPasswd + '\'' +
+                ", status='" + status + '\'' +
+                ", createDate=" + createDate +
+                ", pauseDate=" + pauseDate +
+                ", closeDate=" + closeDate +
+                ", costId=" + costId +
+                ", account=" + account +
+                ", cost=" + cost +
+                '}';
+    }
+
     public Cost getCost() {
         return cost;
     }
@@ -124,21 +142,4 @@ public class Service {
     }
 
 
-    @Override
-    public String toString() {
-        return "Service{" +
-                "serviceId=" + serviceId +
-                ", accountId=" + accountId +
-                ", unixHost='" + unixHost + '\'' +
-                ", osUsername='" + osUsername + '\'' +
-                ", loginPasswd='" + loginPasswd + '\'' +
-                ", status='" + status + '\'' +
-                ", createDate=" + createDate +
-                ", pauseDate=" + pauseDate +
-                ", closeDate=" + closeDate +
-                ", costId=" + costId +
-                ", account=" + account +
-                ", cost=" + cost +
-                '}';
-    }
 }

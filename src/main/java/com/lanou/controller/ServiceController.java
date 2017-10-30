@@ -16,48 +16,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 
-/**
- * 业务控制器
- * @author dllo
- * @date 2017/10/25
- */
+
 @Controller
 public class ServiceController {
 
     @Resource
     private ServiceService serviceService;
 
-    /**
-     * 跳转到业务账户列表
-     * @return
-     */
+    // 跳转到业务账户列表
+
     @RequestMapping(value = "/service/service_list")
     public String account() {
         return "/service/service_list";
     }
 
-    /**
-     * 跳转到添加
-     * @return
-     */
+    // 跳转到添加
+
     @RequestMapping(value = "/service/service_add")
     public String add() {
         return "/service/service_add";
     }
 
-    /**
-     * 跳转到详情
-     * @return
-     */
+    // 跳转到详情
+
     @RequestMapping(value = "/service/service_detail")
     public String accountDetail(){
         return "/service/service_detail";
     }
 
-    /**
-     * 跳转到修改页面
-     * @return
-     */
+   // 跳转到修改页面
+
     @RequestMapping(value = "/service/service_modi")
     public String accountModi() {
         return "/service/service_modi";
@@ -65,12 +53,11 @@ public class ServiceController {
 
 
 
-    /**
-     * 显示全部
-     * @param pageNo
-     * @param pageSize
-     * @return
-     */
+   // 显示全部
+
+
+
+
     @ResponseBody
     @RequestMapping(value ="/getallservices")
     public PageInfo<Service> getAllService(@RequestParam("no") Integer pageNo,
@@ -78,12 +65,8 @@ public class ServiceController {
         return serviceService.queryServiceByPage(pageNo,pageSize);
     }
 
-    /**
-     * 显示详情(存session部分)
-     *
-     * @param id
-     * @return
-     */
+   // 显示
+
     @ResponseBody
     @RequestMapping(value = "/saveserviceid", method = RequestMethod.POST)
     public AjaxResult saveServiceId(HttpServletRequest request, HttpServletResponse response,
@@ -93,13 +76,8 @@ public class ServiceController {
         return new AjaxResult(1);
     }
 
-    /**
-     * 显示详情(service_detail.html请求数据)
-     *
-     * @param request
-     * @param response
-     * @return
-     */
+    // 显示详情
+
     @ResponseBody
     @RequestMapping("/selectbyserviceid")
     public AjaxResult selectById(HttpServletRequest request, HttpServletResponse response) {
@@ -109,11 +87,8 @@ public class ServiceController {
         return new AjaxResult(service);
     }
 
-    /**
-     * 开启账户
-     * @param sid
-     * @return
-     */
+    // 开启账户
+
     @ResponseBody
     @RequestMapping(value = "/openservice")
     public AjaxResult openService(@RequestParam("serviceId") Integer sid) {
@@ -129,11 +104,8 @@ public class ServiceController {
     }
 
 
-    /**
-     * 暂停账户
-     * @param sid
-     * @return
-     */
+    // 暂停账户
+
     @ResponseBody
     @RequestMapping(value = "/pauseservice")
     public AjaxResult pauseService(@RequestParam("serviceId") Integer sid) {
@@ -146,11 +118,8 @@ public class ServiceController {
         return new AjaxResult(service);
     }
 
-    /**
-     * 删除账务账户信息
-     * @param sid
-     * @return
-     */
+    // 删除账务账户信息
+
     @ResponseBody
     @RequestMapping(value = "/delservice")
     public AjaxResult deleteService(@RequestParam("serviceId") Integer sid) {
@@ -165,11 +134,8 @@ public class ServiceController {
     }
 
 
-    /**
-     * 添加信息
-     * @param service
-     * @return
-     */
+    // 添加信息
+
     @ResponseBody
     @RequestMapping(value = "/addservice", method = RequestMethod.POST)
     public AjaxResult addService(Service service) {
@@ -177,16 +143,8 @@ public class ServiceController {
         return new AjaxResult(1);
     }
 
-    /**
-     * 模糊查询
-     * @param pageNo
-     * @param pageSize
-     * @param idcardNo
-     * @param osUsername
-     * @param unixHost
-     * @param status
-     * @return
-     */
+    // 模糊查询
+
     @ResponseBody
     @RequestMapping(value = "/queryservice", method = RequestMethod.POST)
     public PageInfo<Service> queryServiceByCondition(@RequestParam("no") Integer pageNo,
